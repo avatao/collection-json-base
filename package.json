@@ -1,0 +1,25 @@
+{
+  "name": "collection-json.ts",
+  "version": "0.0.1",
+  "description": "Collection+JSON TypeScript Client Library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avatao/collection-json.ts.git"
+  },
+  "keywords": [
+    "collection-json.ts",
+    "collection-json",
+    "typescript",
+    "client"
+  ],
+  "author": "Avatao (https://avatao.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/avatao/collection-json.ts/issues"
+  },
+  "homepage": "https://github.com/avatao/collection-json.ts#readme"
+}
