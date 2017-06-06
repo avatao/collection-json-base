@@ -27,4 +27,9 @@ export class Data implements DataJSON {
         let idx = data_array.findIndex((d) => d["name"] == name);
         return idx > -1 ? data_array[idx].value : "";
     }
+
+    static findPrompt(data_array: Data[], name: string): string {
+        let idx = data_array.findIndex((d) => d["name"] == name);
+        return idx > -1 ? data_array[idx].prompt : "";
+    }
 }
