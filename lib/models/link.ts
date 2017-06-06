@@ -1,5 +1,3 @@
-import {findIndex} from 'lodash';
-
 export interface LinkJSON {
     href: string;
     rel: string;
@@ -24,7 +22,7 @@ export class Link implements LinkJSON {
     }
 
     static findLink(link_array: Link[], rel: string): string {
-        let idx = findIndex(link_array, {'rel': rel});
+        let idx = link_array.findIndex((l) => l["rel"] == rel);
         return idx > -1 ? link_array[idx].href : "";
     }
 

@@ -1,5 +1,3 @@
-import {findIndex} from 'lodash';
-
 export interface DataJSON {
     name: string;
     value: string | number | boolean;
@@ -26,7 +24,7 @@ export class Data implements DataJSON {
     }
 
     static findValue(data_array: Data[], name: string) : string | number | boolean {
-        let idx = findIndex(data_array, {'name': name});
+        let idx = data_array.findIndex((d) => d["name"] == name);
         return idx > -1 ? data_array[idx].value : "";
     }
 }
