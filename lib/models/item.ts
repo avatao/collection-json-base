@@ -1,20 +1,19 @@
 import { Data } from './data';
+import { DataArrayHolder, DataArrayHolderJSON } from './dataarrayholder';
 import { Link } from './link';
 
-export interface ItemJSON {
+export interface ItemJSON extends DataArrayHolderJSON {
     href: string;
-    data: Data[];
     links: Link[];
 }
 
-export class Item implements ItemJSON {
+export class Item extends DataArrayHolder implements ItemJSON {
     href: string;
-    data: Data[];
     links: Link[];
 
     constructor(item: ItemJSON) {
+        super(item);
         this.href = item["href"];
-        this.data = Data.parseArray(item["data"]);
         this.links = Link.parseArray(item["links"]);
     }
 

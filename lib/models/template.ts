@@ -1,13 +1,11 @@
 import { Data } from './data'
+import { DataArrayHolder, DataArrayHolderJSON } from './dataarrayholder';
 
-export interface TemplateJSON {
-    data: Data[];
+export interface TemplateJSON extends DataArrayHolderJSON {
 }
 
-export class Template implements TemplateJSON {
-    data: Data[];
-
+export class Template extends DataArrayHolder implements TemplateJSON {
     constructor(template: TemplateJSON) {
-        this.data = template ? Data.parseArray(template["data"]) : [];
+        super(template);
     }
 }

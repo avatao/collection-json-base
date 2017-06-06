@@ -1,26 +1,25 @@
 import { Data } from './data';
+import { DataArrayHolder, DataArrayHolderJSON } from './dataarrayholder';
 
-export interface QueryJSON {
+export interface QueryJSON extends DataArrayHolderJSON {
     href: string;
     rel: string;
     name: string;
     prompt: string;
-    data: Data[];
 }
 
-export class Query implements QueryJSON {
+export class Query extends DataArrayHolder implements QueryJSON {
     href: string;
     rel: string;
     name: string;
     prompt: string;
-    data: Data[];
 
     constructor(query: QueryJSON) {
+        super(query)
         this.href = query["href"];
         this.rel = query["rel"];
         this.name = query["name"];
         this.prompt = query["prompt"];
-        this.data = Data.parseArray(query["data"]);
     }
 
     static parseArray(queries: QueryJSON[]): Query[] {
