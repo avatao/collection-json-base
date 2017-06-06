@@ -18,6 +18,10 @@ export class Item implements ItemJSON {
         this.links = Link.parseArray(item["links"]);
     }
 
+    link(rel: string): string {
+        return Link.findLink(this.links, rel);
+    }
+
     static parseArray(items: ItemJSON[]) {
         let item_arr: Item[] = [];
         if(items) {
