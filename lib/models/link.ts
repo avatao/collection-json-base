@@ -1,3 +1,5 @@
+import { Collection } from './collection';
+
 export interface LinkJSON {
     href: string;
     rel: string;
@@ -6,7 +8,7 @@ export interface LinkJSON {
     render: string;
 }
 
-export class Link implements LinkJSON {
+export abstract class Link implements LinkJSON {
     href: string;
     rel: string;
     name: string;
@@ -21,16 +23,18 @@ export class Link implements LinkJSON {
         this.render = link["render"] || "";
     }
 
+    abstract follow(): Collection<any>;
+
     static findLink(link_array: Link[], rel: string): string {
         let result = link_array.find((link) => link.rel === rel);
         return result && result.href || "";
     }
 
-    static parseArray(links: LinkJSON[]) {
-        let link_arr: Link[] = [];
+    static parseArray<LinkImpl extends Link>(links: LinkJSON[], linkimpl: {new (l: LinkJSON): LinkImpl;}): LinkImpl[] {
+        let link_arr: LinkImpl[] = [];
         if(links) {
             for (let l of links) {
-                link_arr.push(new Link(l));
+                link_arr.push(new linkimpl(l));
             }
         }
         return link_arr;

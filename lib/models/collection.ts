@@ -1,24 +1,28 @@
-import { Link } from './link';
+import { Link, LinkJSON } from './link';
 import { Item } from './item';
 import { Query } from './query';
 import { Template } from './template';
 import { Error } from './error'
 
-export class Collection {
+export abstract class Collection<LinkImpl extends Link>{
     private version: string;
     private href: string;
     private links: Link[];
-    private items: Item[];
+    private items: Item<LinkImpl>[];
     private queries: Query[];
     private template: Template;
     private error: Error;
+
+    constructor(url: string, private linkimpl: {new(link: LinkJSON): LinkImpl}) {
+        this.load(url);
+    }
 
     parse(jsontext: string): void {
         let json = JSON.parse(jsontext)["collection"];
         this.version = json["version"] || '1.0';
         this.href = json["href"]
-        this.links = Link.parseArray(json["links"]);
-        this.items = Item.parseArray(json["items"]);
+        this.links = Link.parseArray<LinkImpl>(json["links"], this.linkimpl);
+        this.items = Item.parseArray<LinkImpl>(json["items"], this.linkimpl);
         this.queries = Query.parseArray(json["query"]);
         this.template = new Template(json["template"]);
         this.error = new Error(json["error"]);
@@ -27,6 +31,8 @@ export class Collection {
     link(rel: string): string {
         return Link.findLink(this.links, rel);
     }
+
+    abstract load(url: string): void;
     // TODO: make this work
     /*
     static parseArray<TJSON, T>(elements: TJSON, t: {new(): T; }): T[] {
