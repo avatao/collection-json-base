@@ -4,7 +4,11 @@ export interface ErrorJSON {
     message: string;
 }
 
-export class Error implements ErrorJSON {
+export interface ErrorAPI {}
+
+export interface Error extends ErrorJSON, ErrorAPI {}
+
+export class ErrorBase implements Error {
     public title: string;
     public code: string;
     public message: string;

@@ -1,9 +1,12 @@
-import { DataArrayHolder, DataArrayHolderJSON } from './dataarrayholder';
+import { DataArrayHolderBase, DataArrayHolderJSON } from './dataarrayholder';
 
-export interface TemplateJSON extends DataArrayHolderJSON {
-}
+export interface TemplateJSON extends DataArrayHolderJSON {}
 
-export class Template extends DataArrayHolder implements TemplateJSON {
+export interface TemplateAPI {}
+
+export interface Template extends TemplateJSON, TemplateAPI {}
+
+export class TemplateBase extends DataArrayHolderBase implements Template {
     constructor(template: TemplateJSON) {
         super(template);
     }

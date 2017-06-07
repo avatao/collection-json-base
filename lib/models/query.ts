@@ -1,4 +1,4 @@
-import { DataArrayHolder, DataArrayHolderJSON } from './dataarrayholder';
+import { DataArrayHolderBase, DataArrayHolderJSON } from './dataarrayholder';
 
 export interface QueryJSON extends DataArrayHolderJSON {
     href: string;
@@ -7,7 +7,11 @@ export interface QueryJSON extends DataArrayHolderJSON {
     prompt: string;
 }
 
-export class Query extends DataArrayHolder implements QueryJSON {
+export interface QueryAPI {}
+
+export interface Query extends QueryJSON, QueryAPI {}
+
+export class QueryBase extends DataArrayHolderBase implements Query {
     public href: string;
     public rel: string;
     public name: string;
@@ -19,15 +23,5 @@ export class Query extends DataArrayHolder implements QueryJSON {
         this.rel = query.rel;
         this.name = query.name;
         this.prompt = query.prompt;
-    }
-
-    public static parseArray(queries: QueryJSON[]): Query[] {
-        const queryArray: Query[] = [];
-        if (queries) {
-            for (const q of queries) {
-                queryArray.push(new Query(q));
-            }
-        }
-        return queryArray;
     }
 }

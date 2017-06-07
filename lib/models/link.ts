@@ -8,7 +8,13 @@ export interface LinkJSON {
     render: string;
 }
 
-export abstract class Link implements LinkJSON {
+export interface LinkAPI {
+    follow(): Collection;
+}
+
+export interface Link extends LinkJSON, LinkAPI {}
+
+export abstract class LinkBase implements Link {
     public href: string;
     public rel: string;
     public name: string;
@@ -23,22 +29,10 @@ export abstract class Link implements LinkJSON {
         this.render = link.render || '';
     }
 
-    public abstract follow(): Collection<any>;
+    public abstract follow(): Collection;
 
     public static findLink(linkArray: Link[], rel: string): string {
         const result = linkArray.find((link) => link.rel === rel);
         return result && result.href || '';
-    }
-
-    public static parseArray<LinkImpl extends Link>(links: LinkJSON[],
-                                                    linkimpl: {new (l: LinkJSON): LinkImpl; })
-    : LinkImpl[] {
-        const linkArray: LinkImpl[] = [];
-        if (links) {
-            for (const l of links) {
-                linkArray.push(new linkimpl(l));
-            }
-        }
-        return linkArray;
     }
 }
