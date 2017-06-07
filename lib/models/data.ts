@@ -5,31 +5,31 @@ export interface DataJSON {
 }
 
 export class Data implements DataJSON {
-    name: string;
-    value: string | number | boolean;
-    prompt: string;
+    public name: string;
+    public value: string | number | boolean;
+    public prompt: string;
 
     constructor(data: DataJSON) {
-        this.name = data["name"];
-        this.value = data["value"];
-        this.prompt = data["prompt"];
+        this.name = data.name;
+        this.value = data.value;
+        this.prompt = data.prompt;
     }
 
-    static parseArray(data: DataJSON[]): Data[] {
-        let data_arr: Data[] = [];
-        for (let d of data) {
-            data_arr.push(new Data(d));
+    public static parseArray(data: DataJSON[]): Data[] {
+        const dataArray: Data[] = [];
+        for (const d of data) {
+            dataArray.push(new Data(d));
         }
-        return data_arr;
+        return dataArray;
     }
 
-    static findValue(data_array: Data[], name: string) : string | number | boolean {
-        let result = data_array.find((data) => data["name"] === name);
-        return result && result.value || "";
+    public static findValue(dataArray: Data[], name: string): string | number | boolean {
+        const result = dataArray.find((data) => data.name === name);
+        return result && result.value || '';
     }
 
-    static findPrompt(data_array: Data[], name: string): string {
-        let result = data_array.find((data) => data["name"] === name)
-        return result && result.prompt || "";
+    public static findPrompt(dataArray: Data[], name: string): string {
+        const result = dataArray.find((data) => data.name === name);
+        return result && result.prompt || '';
     }
 }

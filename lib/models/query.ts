@@ -1,4 +1,3 @@
-import { Data } from './data';
 import { DataArrayHolder, DataArrayHolderJSON } from './dataarrayholder';
 
 export interface QueryJSON extends DataArrayHolderJSON {
@@ -9,26 +8,26 @@ export interface QueryJSON extends DataArrayHolderJSON {
 }
 
 export class Query extends DataArrayHolder implements QueryJSON {
-    href: string;
-    rel: string;
-    name: string;
-    prompt: string;
+    public href: string;
+    public rel: string;
+    public name: string;
+    public prompt: string;
 
     constructor(query: QueryJSON) {
-        super(query)
-        this.href = query["href"];
-        this.rel = query["rel"];
-        this.name = query["name"];
-        this.prompt = query["prompt"];
+        super(query);
+        this.href = query.href;
+        this.rel = query.rel;
+        this.name = query.name;
+        this.prompt = query.prompt;
     }
 
-    static parseArray(queries: QueryJSON[]): Query[] {
-        let query_arr: Query[] = [];
-        if(queries) {
-            for (let q of queries) {
-                query_arr.push(new Query(q));
+    public static parseArray(queries: QueryJSON[]): Query[] {
+        const queryArray: Query[] = [];
+        if (queries) {
+            for (const q of queries) {
+                queryArray.push(new Query(q));
             }
         }
-        return query_arr;
+        return queryArray;
     }
 }

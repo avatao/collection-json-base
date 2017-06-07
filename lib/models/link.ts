@@ -9,34 +9,36 @@ export interface LinkJSON {
 }
 
 export abstract class Link implements LinkJSON {
-    href: string;
-    rel: string;
-    name: string;
-    prompt: string;
-    render: string;
+    public href: string;
+    public rel: string;
+    public name: string;
+    public prompt: string;
+    public render: string;
 
     constructor(link: LinkJSON) {
-        this.href = link["href"];
-        this.rel = link["rel"];
-        this.name = link["name"] || "";
-        this.prompt = link["prompt"] || "";
-        this.render = link["render"] || "";
+        this.href = link.href;
+        this.rel = link.rel;
+        this.name = link.name || '';
+        this.prompt = link.prompt || '';
+        this.render = link.render || '';
     }
 
-    abstract follow(): Collection<any>;
+    public abstract follow(): Collection<any>;
 
-    static findLink(link_array: Link[], rel: string): string {
-        let result = link_array.find((link) => link.rel === rel);
-        return result && result.href || "";
+    public static findLink(linkArray: Link[], rel: string): string {
+        const result = linkArray.find((link) => link.rel === rel);
+        return result && result.href || '';
     }
 
-    static parseArray<LinkImpl extends Link>(links: LinkJSON[], linkimpl: {new (l: LinkJSON): LinkImpl;}): LinkImpl[] {
-        let link_arr: LinkImpl[] = [];
-        if(links) {
-            for (let l of links) {
-                link_arr.push(new linkimpl(l));
+    public static parseArray<LinkImpl extends Link>(links: LinkJSON[],
+                                                    linkimpl: {new (l: LinkJSON): LinkImpl; })
+    : LinkImpl[] {
+        const linkArray: LinkImpl[] = [];
+        if (links) {
+            for (const l of links) {
+                linkArray.push(new linkimpl(l));
             }
         }
-        return link_arr;
+        return linkArray;
     }
 }

@@ -1,4 +1,3 @@
-import { Data } from './data'
 import { DataArrayHolder, DataArrayHolderJSON } from './dataarrayholder';
 
 export interface TemplateJSON extends DataArrayHolderJSON {
