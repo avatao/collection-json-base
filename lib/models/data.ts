@@ -24,12 +24,12 @@ export class Data implements DataJSON {
     }
 
     static findValue(data_array: Data[], name: string) : string | number | boolean {
-        let idx = data_array.findIndex((d) => d["name"] == name);
-        return idx > -1 ? data_array[idx].value : "";
+        let result = data_array.find((data) => data["name"] === name);
+        return result && result.value || "";
     }
 
     static findPrompt(data_array: Data[], name: string): string {
-        let idx = data_array.findIndex((d) => d["name"] == name);
-        return idx > -1 ? data_array[idx].prompt : "";
+        let result = data_array.find((data) => data["name"] === name)
+        return result && result.prompt || "";
     }
 }

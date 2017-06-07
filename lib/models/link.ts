@@ -22,8 +22,8 @@ export class Link implements LinkJSON {
     }
 
     static findLink(link_array: Link[], rel: string): string {
-        let idx = link_array.findIndex((l) => l["rel"] == rel);
-        return idx > -1 ? link_array[idx].href : "";
+        let result = link_array.find((link) => link.rel === rel);
+        return result && result.href || "";
     }
 
     static parseArray(links: LinkJSON[]) {
