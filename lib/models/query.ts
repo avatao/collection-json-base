@@ -1,3 +1,4 @@
+import { CollectionAPI } from './collection';
 import { Data } from './data';
 import { DataStore } from './datastore';
 
@@ -9,7 +10,9 @@ export interface QueryJSON {
     data: Data[];
 }
 
-export interface QueryAPI {}
+export interface QueryAPI {
+    send(): Promise<CollectionAPI>;
+}
 
 export interface Query extends QueryJSON, QueryAPI {}
 
@@ -27,4 +30,6 @@ export abstract class QueryBase implements QueryAPI {
         this.prompt = query.prompt;
         this.datastore = new DataStore(query.data);
     }
+
+    public abstract send(): Promise<CollectionAPI>;
 }
