@@ -1,4 +1,4 @@
-import { CollectionAPI } from './collection';
+import { Collection } from './collection';
 
 export interface LinkJSON {
     href: string;
@@ -9,7 +9,7 @@ export interface LinkJSON {
 }
 
 export interface LinkAPI {
-    follow(): Promise<CollectionAPI>;
+    follow(): Promise<Collection>;
 }
 
 export interface Link extends LinkJSON, LinkAPI {}
@@ -29,5 +29,5 @@ export abstract class LinkBase implements Link {
         this.render = link.render || '';
     }
 
-    public abstract follow(): Promise<CollectionAPI>;
+    public abstract follow(): Promise<Collection>;
 }

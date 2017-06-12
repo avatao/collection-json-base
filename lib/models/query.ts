@@ -1,4 +1,4 @@
-import { CollectionAPI } from './collection';
+import { Collection } from './collection';
 import { Data } from './data';
 import { DataStore } from './datastore';
 
@@ -11,7 +11,7 @@ export interface QueryJSON {
 }
 
 export interface QueryAPI {
-    send(): Promise<CollectionAPI>;
+    send(): Promise<Collection>;
 }
 
 export interface Query extends QueryJSON, QueryAPI {}
@@ -31,5 +31,5 @@ export abstract class QueryBase implements QueryAPI {
         this.datastore = new DataStore(query.data);
     }
 
-    public abstract send(): Promise<CollectionAPI>;
+    public abstract send(): Promise<Collection>;
 }

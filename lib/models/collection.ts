@@ -16,14 +16,24 @@ export interface CollectionJSON {
     error: Error;
 }
 
+export interface CollectionData {
+    version: string;
+    href: string;
+    links: Links;
+    items: Item[];
+    queries: Queries;
+    template: Template;
+    error: Error;
+}
+
 export interface CollectionAPI {
     parse(collection: CollectionJSON): void;
     link(rel: string): Link;
 }
 
-export interface Collection extends CollectionJSON, CollectionAPI {}
+export interface Collection extends CollectionData, CollectionAPI {}
 
-export abstract class CollectionBase implements CollectionAPI {
+export abstract class CollectionBase implements Collection {
     public version: string;
     public href: string;
     public links: Links;

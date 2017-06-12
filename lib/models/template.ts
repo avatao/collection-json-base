@@ -1,4 +1,4 @@
-import { CollectionAPI } from './collection';
+import { Collection } from './collection';
 import { Data } from './data';
 import { DataStore } from './datastore';
 
@@ -7,8 +7,8 @@ export interface TemplateJSON {
 }
 
 export interface TemplateAPI {
-    submit(): Promise<CollectionAPI>;
-    update(): Promise<CollectionAPI>;
+    submit(): Promise<Collection>;
+    update(): Promise<Collection>;
 }
 
 export interface Template extends TemplateJSON, TemplateAPI {}
@@ -20,6 +20,6 @@ export abstract class TemplateBase implements TemplateAPI {
         this.datastore = new DataStore(template.data);
     }
 
-    public abstract submit(): Promise<CollectionAPI>;
-    public abstract update(): Promise<CollectionAPI>;
+    public abstract submit(): Promise<Collection>;
+    public abstract update(): Promise<Collection>;
 }
