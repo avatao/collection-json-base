@@ -1,18 +1,6 @@
-import { Collection } from './collection';
-
-export interface LinkJSON {
-    href: string;
-    rel: string;
-    name: string;
-    prompt: string;
-    render: string;
-}
-
-export interface LinkAPI {
-    follow(): Promise<Collection>;
-}
-
-export interface Link extends LinkJSON, LinkAPI {}
+import { Collection } from '../interfaces/collection';
+import { LinkJSON } from '../interfaces/json';
+import { Link } from '../interfaces/link';
 
 export abstract class LinkBase implements Link {
     public href: string;

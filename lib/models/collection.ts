@@ -1,37 +1,11 @@
-import { Error, ErrorJSON } from './error';
-import { Item, ItemJSON } from './item';
-import { Link, LinkJSON } from './link';
+import { Collection } from '../interfaces/collection';
+import { Item } from '../interfaces/item';
+import { CollectionJSON, ErrorJSON, ItemJSON, LinkJSON, QueryJSON, TemplateJSON } from '../interfaces/json';
+import { Link } from '../interfaces/link';
+import { Query } from '../interfaces/query';
+import { Template } from '../interfaces/template';
 import { LinkStore } from './linkstore';
 import { QueryStore } from './querystore';
-import { Query, QueryJSON } from './query';
-import { Template, TemplateJSON } from './template';
-
-export interface CollectionJSON {
-    version: string;
-    href: string;
-    links: Link[];
-    items: Item[];
-    queries: Query[];
-    template: Template;
-    error: Error;
-}
-
-export interface CollectionData {
-    version: string;
-    href: string;
-    links: LinkStore;
-    items: Item[];
-    queries: QueryStore;
-    template: Template;
-    error: Error;
-}
-
-export interface CollectionAPI {
-    parse(collection: CollectionJSON): void;
-    link(rel: string): Link;
-}
-
-export interface Collection extends CollectionData, CollectionAPI {}
 
 export abstract class CollectionBase implements Collection {
     public version: string;

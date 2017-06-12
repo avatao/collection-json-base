@@ -1,28 +1,7 @@
-import { Collection } from './collection';
-import { Data } from './data';
+import { Collection } from '../interfaces/collection';
+import { QueryJSON } from '../interfaces/json';
+import { Query } from '../interfaces/query';
 import { DataStore } from './datastore';
-
-export interface QueryJSON {
-    href: string;
-    rel: string;
-    name: string;
-    prompt: string;
-    data: Data[];
-}
-
-export interface QueryData {
-    href: string;
-    rel: string;
-    name: string;
-    prompt: string;
-    datastore: DataStore;
-}
-
-export interface QueryAPI {
-    send(): Promise<Collection>;
-}
-
-export interface Query extends QueryData, QueryAPI {}
 
 export abstract class QueryBase implements Query {
     public href: string;

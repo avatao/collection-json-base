@@ -1,12 +1,5 @@
-export interface ErrorJSON {
-    title: string;
-    code: string;
-    message: string;
-}
-
-export interface ErrorAPI {}
-
-export interface Error extends ErrorJSON, ErrorAPI {}
+import { Error } from '../interfaces/error';
+import { ErrorJSON } from '../interfaces/json';
 
 export class ErrorBase implements Error {
     public title: string;

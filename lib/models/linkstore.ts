@@ -1,5 +1,4 @@
-import { Link } from './link';
-
+import { Link } from '../interfaces/link';
 export class LinkStore {
     private links: Map<string, Link>;
     constructor() {

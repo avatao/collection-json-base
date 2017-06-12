@@ -1,17 +1,7 @@
-import { Collection } from './collection';
-import { Data } from './data';
+import { Collection } from '../interfaces/collection';
+import { TemplateJSON } from '../interfaces/json';
+import { TemplateAPI } from '../interfaces/template';
 import { DataStore } from './datastore';
-
-export interface TemplateJSON {
-    data: Data[];
-}
-
-export interface TemplateAPI {
-    submit(): Promise<Collection>;
-    update(): Promise<Collection>;
-}
-
-export interface Template extends TemplateJSON, TemplateAPI {}
 
 export abstract class TemplateBase implements TemplateAPI {
     private datastore: DataStore;
