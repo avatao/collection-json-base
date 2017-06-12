@@ -1,6 +1,6 @@
 import { Link } from './link';
 
-export class Links {
+export class LinkStore {
     private links: Map<string, Link>;
     constructor() {
         this.links = new Map();

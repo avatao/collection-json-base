@@ -10,13 +10,21 @@ export interface QueryJSON {
     data: Data[];
 }
 
+export interface QueryData {
+    href: string;
+    rel: string;
+    name: string;
+    prompt: string;
+    datastore: DataStore;
+}
+
 export interface QueryAPI {
     send(): Promise<Collection>;
 }
 
-export interface Query extends QueryJSON, QueryAPI {}
+export interface Query extends QueryData, QueryAPI {}
 
-export abstract class QueryBase implements QueryAPI {
+export abstract class QueryBase implements Query {
     public href: string;
     public rel: string;
     public name: string;

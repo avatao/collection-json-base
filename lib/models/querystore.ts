@@ -1,6 +1,6 @@
 import { Query } from './query';
 
-export class Queries {
+export class QueryStore {
     private queries: Map<string, Query>;
 
     constructor() {

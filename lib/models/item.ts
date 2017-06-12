@@ -1,7 +1,7 @@
 import { Data } from './data';
 import { DataStore } from './datastore';
 import { Link } from './link';
-import { Links } from './links';
+import { LinkStore } from './linkstore';
 
 export interface ItemJSON {
     href: string;
@@ -17,7 +17,7 @@ export interface Item extends ItemJSON, ItemAPI {}
 
 export abstract class ItemBase implements ItemAPI {
     public href: string;
-    public links: Links;
+    public links: LinkStore;
     public datastore: DataStore;
 
     constructor(item: ItemJSON) {
