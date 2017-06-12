@@ -5,6 +5,7 @@
     ],
     "jsRules": {},
     "rules": {
+        "curly": [true, "as-needed"],
         "interface-name": [
             true,
             "never-prefix"
@@ -31,6 +32,7 @@
             }
         ],
         "no-empty-interface": false,
+        "one-line": false,
         "quotemark": [
             true,
             "single"
