@@ -1,27 +1,30 @@
-import { DataArrayHolderBase, DataArrayHolderJSON } from './dataarrayholder';
+import { Data } from './data';
+import { DataStore } from './datastore';
 
-export interface QueryJSON extends DataArrayHolderJSON {
+export interface QueryJSON {
     href: string;
     rel: string;
     name: string;
     prompt: string;
+    data: Data[];
 }
 
 export interface QueryAPI {}
 
 export interface Query extends QueryJSON, QueryAPI {}
 
-export class QueryBase extends DataArrayHolderBase implements Query {
+export abstract class QueryBase implements QueryAPI {
     public href: string;
     public rel: string;
     public name: string;
     public prompt: string;
+    public datastore: DataStore;
 
     constructor(query: QueryJSON) {
-        super(query);
         this.href = query.href;
         this.rel = query.rel;
         this.name = query.name;
         this.prompt = query.prompt;
+        this.datastore = new DataStore(query.data);
     }
 }

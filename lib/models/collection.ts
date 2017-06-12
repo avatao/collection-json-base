@@ -1,6 +1,8 @@
 import { Error, ErrorJSON } from './error';
 import { Item, ItemJSON } from './item';
-import { Link, LinkBase, LinkJSON } from './link';
+import { Link, LinkJSON } from './link';
+import { Links } from './links';
+import { Queries } from './queries';
 import { Query, QueryJSON } from './query';
 import { Template, TemplateJSON } from './template';
 
@@ -21,12 +23,12 @@ export interface CollectionAPI {
 
 export interface Collection extends CollectionJSON, CollectionAPI {}
 
-export abstract class CollectionBase implements Collection {
+export abstract class CollectionBase implements CollectionAPI {
     public version: string;
     public href: string;
-    public links: Link[];
+    public links: Links;
     public items: Item[];
-    public queries: Query[];
+    public queries: Queries;
     public template: Template;
     public error: Error;
 

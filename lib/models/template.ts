@@ -1,13 +1,18 @@
-import { DataArrayHolderBase, DataArrayHolderJSON } from './dataarrayholder';
+import { Data } from './data';
+import { DataStore } from './datastore';
 
-export interface TemplateJSON extends DataArrayHolderJSON {}
+export interface TemplateJSON {
+    data: Data[];
+}
 
 export interface TemplateAPI {}
 
 export interface Template extends TemplateJSON, TemplateAPI {}
 
-export class TemplateBase extends DataArrayHolderBase implements Template {
+export abstract class TemplateBase implements TemplateAPI {
+    private datastore: DataStore;
+
     constructor(template: TemplateJSON) {
-        super(template);
+        this.datastore = new DataStore(template.data);
     }
 }

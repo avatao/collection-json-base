@@ -30,9 +30,4 @@ export abstract class LinkBase implements Link {
     }
 
     public abstract follow(): Collection;
-
-    public static findLink(linkArray: Link[], rel: string): string {
-        const result = linkArray.find((link) => link.rel === rel);
-        return result && result.href || '';
-    }
 }
