@@ -10,7 +10,7 @@ export interface ItemJSON {
 }
 
 export interface ItemAPI {
-    link(rel: string): Link | undefined;
+    link(rel: string): Link;
 }
 
 export interface Item extends ItemJSON, ItemAPI {}
