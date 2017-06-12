@@ -13,9 +13,15 @@ export interface ItemAPI {
     link(rel: string): Link;
 }
 
-export interface Item extends ItemJSON, ItemAPI {}
+export interface ItemData {
+    href: string;
+    links: LinkStore;
+    datastore: DataStore;
+}
 
-export abstract class ItemBase implements ItemAPI {
+export interface Item extends ItemData, ItemAPI {}
+
+export abstract class ItemBase implements Item {
     public href: string;
     public links: LinkStore;
     public datastore: DataStore;
