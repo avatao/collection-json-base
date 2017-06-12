@@ -17,7 +17,7 @@ export interface CollectionJSON {
 }
 
 export interface CollectionAPI {
-    parse(json: string): void;
+    parse(collection: CollectionJSON): void;
     link(rel: string): Link;
 }
 
@@ -39,7 +39,7 @@ export abstract class CollectionBase implements CollectionAPI {
     protected abstract parseTemplate(template: TemplateJSON): Template;
     protected abstract parseError(error: ErrorJSON): Error;
 
-    public abstract parse(jsontext: string): void;
+    public abstract parse(collection: CollectionJSON): void;
 
     public link(rel: string): Link {
         return this.links.link(rel);
