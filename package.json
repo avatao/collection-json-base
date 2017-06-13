@@ -22,5 +22,10 @@
   "bugs": {
     "url": "https://github.com/avatao/collection-json.ts/issues"
   },
-  "homepage": "https://github.com/avatao/collection-json.ts#readme"
+  "homepage": "https://github.com/avatao/collection-json.ts#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "tslint": "^5.4.3",
+    "typescript": "^2.3.4"
+  }
 }
