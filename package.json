@@ -1,6 +1,6 @@
 {
   "name": "collection-json.ts",
-  "version": "0.0.1",
+  "version": "1.0.0-alpha.1",
   "description": "Collection+JSON TypeScript Client Library",
   "main": "index.js",
   "scripts": {
