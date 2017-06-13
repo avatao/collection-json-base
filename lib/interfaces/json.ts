@@ -1,17 +1,11 @@
-import { Data } from './data';
-import { Item } from './item';
-import { Link } from './link';
-import { Query } from './query';
-import { Template } from './template';
-
 export interface CollectionJSON {
-    version: string;
-    href: string;
-    links?: Link[];
-    items?: Item[];
-    queries?: Query[];
-    template?: Template;
-    error?: Error;
+    version?: string;
+    href?: string;
+    links?: LinkJSON[];
+    items?: ItemJSON[];
+    queries?: QueryJSON[];
+    template?: TemplateJSON;
+    error?: ErrorJSON;
 }
 
 export interface DataJSON {
@@ -28,8 +22,8 @@ export interface ErrorJSON {
 
 export interface ItemJSON {
     href: string;
-    links?: Link[];
-    data?: Data[];
+    links?: LinkJSON[];
+    data?: DataJSON[];
 }
 
 export interface LinkJSON {
@@ -45,9 +39,9 @@ export interface QueryJSON {
     rel: string;
     name?: string;
     prompt?: string;
-    data?: Data[];
+    data?: DataJSON[];
 }
 
 export interface TemplateJSON {
-    data: Data[];
+    data: DataJSON[];
 }

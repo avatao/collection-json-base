@@ -1,5 +1,5 @@
 import { Item } from '../interfaces/item';
-import { ItemJSON } from '../interfaces/json';
+import { ItemJSON, LinkJSON } from '../interfaces/json';
 import { Link } from '../interfaces/link';
 import { DataStore } from './datastore';
 import { LinkStore } from './linkstore';
@@ -18,7 +18,7 @@ export abstract class ItemBase implements Item {
         this.dataStore = item.data && new DataStore(item.data);
     }
 
-    protected abstract parseLinks(links: Link[]): void;
+    protected abstract parseLinks(links: LinkJSON[]): void;
 
     public link(rel: string): Link {
         if (typeof this.links !== 'undefined')
