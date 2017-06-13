@@ -9,7 +9,7 @@ export interface ItemAPI {
 export interface ItemData {
     href: string;
     links: LinkStore;
-    datastore: DataStore;
+    dataStore: DataStore;
 }
 
 export interface Item extends ItemData, ItemAPI {}

@@ -7,12 +7,12 @@ import { LinkStore } from './linkstore';
 export abstract class ItemBase implements Item {
     public href: string;
     public links: LinkStore;
-    public datastore: DataStore;
+    public dataStore: DataStore;
 
     constructor(item: ItemJSON) {
         this.href = item.href;
         // links is constructed by descendant
-        this.datastore = new DataStore(item.data);
+        this.dataStore = new DataStore(item.data);
     }
 
     public link(rel: string): Link {

@@ -8,14 +8,14 @@ export abstract class QueryBase implements Query {
     public rel: string;
     public name: string;
     public prompt: string;
-    public datastore: DataStore;
+    public dataStore: DataStore;
 
     constructor(query: QueryJSON) {
         this.href = query.href;
         this.rel = query.rel;
         this.name = query.name;
         this.prompt = query.prompt;
-        this.datastore = new DataStore(query.data);
+        this.dataStore = new DataStore(query.data);
     }
 
     public abstract send(): Promise<Collection>;

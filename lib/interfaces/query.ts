@@ -6,7 +6,7 @@ export interface QueryData {
     rel: string;
     name: string;
     prompt: string;
-    datastore: DataStore;
+    dataStore: DataStore;
 }
 
 export interface QueryAPI {
