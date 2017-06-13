@@ -8,8 +8,8 @@ export interface ItemAPI {
 
 export interface ItemData {
     href: string;
-    links: LinkStore;
-    dataStore: DataStore;
+    links?: LinkStore;
+    dataStore?: DataStore;
 }
 
 export interface Item extends ItemData, ItemAPI {}

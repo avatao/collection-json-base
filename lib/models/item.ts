@@ -6,16 +6,24 @@ import { LinkStore } from './linkstore';
 
 export abstract class ItemBase implements Item {
     public href: string;
-    public links: LinkStore;
-    public dataStore: DataStore;
+    public links?: LinkStore;
+    public dataStore?: DataStore;
 
     constructor(item: ItemJSON) {
         this.href = item.href;
-        // links is constructed by descendant
-        this.dataStore = new DataStore(item.data);
+        if (item.links) {
+            this.links = new LinkStore();
+            this.parseLinks(item.links);
+        }
+        this.dataStore = item.data && new DataStore(item.data);
     }
 
+    protected abstract parseLinks(links: Link[]): void;
+
     public link(rel: string): Link {
-        return this.links.link(rel);
+        if (typeof this.links !== 'undefined')
+            return this.links.link(rel);
+        else
+            throw new Error('There are no links stored in this Item!');
     }
 }
