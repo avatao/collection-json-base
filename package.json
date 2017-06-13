@@ -24,6 +24,7 @@
   "homepage": "https://github.com/avatao/collection-json.ts#readme",
   "dependencies": {},
   "devDependencies": {
-    "tslint": "^5.4.3"
+    "tslint": "^5.4.3",
+    "typescript": "^2.3.4"
   }
 }
