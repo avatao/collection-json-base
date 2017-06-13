@@ -1,6 +1,10 @@
 Collection+JSON TypeScript Client Library
 =========================================
 
+Disclaimer
+---
+This project is in alpha state, changes are likely use it with care.
+
 Description
 ---
 This is a pure TypeScript representation of the Collection+JSON - Hypermedia Type ([specs](https://github.com/collection-json/spec)) for the client side.
