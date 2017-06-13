@@ -16,10 +16,9 @@ export class DataStore {
 
     public data(name: string): Data {
         const data = this.datastore.get(name);
-        if (data)
+        if (typeof data !== 'undefined')
             return data;
         else
             throw new Error('Key not found');
-
     }
 }

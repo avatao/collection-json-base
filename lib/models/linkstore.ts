@@ -11,7 +11,7 @@ export class LinkStore {
 
     public link(rel: string): Link {
         const link = this.links.get(rel);
-        if (link)
+        if (typeof link !== 'undefined')
             return link;
         else
             throw new Error('Key not found');
