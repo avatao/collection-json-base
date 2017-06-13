@@ -7,16 +7,15 @@ import { Template } from './template';
 
 export interface CollectionData {
     version: string;
-    href: string;
-    links: LinkStore;
-    items: Item[];
-    queries: QueryStore;
-    template: Template;
-    error: Error;
+    href?: string;
+    links?: LinkStore;
+    items?: Item[];
+    queries?: QueryStore;
+    template?: Template;
+    error?: Error;
 }
 
 export interface CollectionAPI {
-    parse(collection: CollectionJSON): void;
     link(rel: string): Link;
 }
 
