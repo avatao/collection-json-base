@@ -2,7 +2,6 @@
   "name": "collection-json.ts",
   "version": "1.0.0-alpha.1",
   "description": "Collection+JSON TypeScript Client Library",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
