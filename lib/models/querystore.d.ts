@@ -1,4 +1,4 @@
-import { Query } from '../interfaces/query';
+import { Query } from '../interfaces';
 export declare class QueryStore {
     private queries;
     constructor();

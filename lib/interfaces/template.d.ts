@@ -1,8 +1,11 @@
+import { DataStore } from '../models';
 import { Collection } from './collection';
-import { TemplateJSON } from './json';
+export interface TemplateData {
+    dataStore: DataStore;
+}
 export interface TemplateAPI {
     submit(): Promise<Collection>;
     update(): Promise<Collection>;
 }
-export interface Template extends TemplateJSON, TemplateAPI {
+export interface Template extends TemplateData, TemplateAPI {
 }

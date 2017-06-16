@@ -1,9 +1,8 @@
-import { LinkStore } from '../models/linkstore';
-import { QueryStore } from '../models/querystore';
-import { Item } from './item';
-import { CollectionJSON } from './json';
-import { Link } from './link';
-import { Template } from './template';
+import {LinkStore, QueryStore} from '../models';
+import {CollectionError} from './error';
+import {Item} from './item';
+import {Link} from './link';
+import {Template} from './template';
 
 export interface CollectionData {
     version: string;
@@ -12,7 +11,7 @@ export interface CollectionData {
     items?: Item[];
     queries?: QueryStore;
     template?: Template;
-    error?: Error;
+    error?: CollectionError;
 }
 
 export interface CollectionAPI {

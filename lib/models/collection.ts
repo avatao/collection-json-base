@@ -1,11 +1,18 @@
-import { Collection } from '../interfaces/collection';
-import { Item } from '../interfaces/item';
-import { CollectionJSON, ErrorJSON, ItemJSON, LinkJSON, QueryJSON, TemplateJSON } from '../interfaces/json';
-import { Link } from '../interfaces/link';
-import { Query } from '../interfaces/query';
-import { Template } from '../interfaces/template';
-import { LinkStore } from './linkstore';
-import { QueryStore } from './querystore';
+import {
+    Collection,
+    CollectionError,
+    CollectionJSON,
+    ErrorJSON,
+    Item,
+    ItemJSON,
+    Link,
+    LinkJSON,
+    QueryJSON,
+    Template,
+    TemplateJSON,
+} from '../interfaces';
+import {LinkStore} from './linkstore';
+import {QueryStore} from './querystore';
 
 export abstract class CollectionBase implements Collection {
     public version: string;
@@ -14,7 +21,7 @@ export abstract class CollectionBase implements Collection {
     public items?: Item[];
     public queries?: QueryStore;
     public template?: Template;
-    public error?: Error;
+    public error?: CollectionError;
 
     constructor(collection: CollectionJSON) {
         this.version = collection.version || '1.0';
@@ -23,18 +30,12 @@ export abstract class CollectionBase implements Collection {
     }
 
     private parseOptionalProperties(collection: CollectionJSON) {
-        if (collection.links) {
-            this.links = new LinkStore();
+        if (collection.links)
             this.parseLinks(collection.links);
-        }
-        if (collection.items) {
-            this.items = [];
+        if (collection.items)
             this.parseItems(collection.items);
-        }
-        if (collection.queries) {
-            this.queries = new QueryStore();
+        if (collection.queries)
             this.parseQueries(collection.queries);
-        }
         if (collection.template)
             this.parseTemplate(collection.template);
         if (collection.error)

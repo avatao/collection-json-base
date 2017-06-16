@@ -1,5 +1,4 @@
-import { DataStore } from '../models/datastore';
-import { LinkStore } from '../models/linkstore';
+import { DataStore, LinkStore } from '../models';
 import { Link } from './link';
 export interface ItemAPI {
     link(rel: string): Link;

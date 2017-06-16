@@ -1,8 +1,4 @@
-import { Collection } from '../interfaces/collection';
-import { Item } from '../interfaces/item';
-import { CollectionJSON, ErrorJSON, ItemJSON, LinkJSON, QueryJSON, TemplateJSON } from '../interfaces/json';
-import { Link } from '../interfaces/link';
-import { Template } from '../interfaces/template';
+import { Collection, CollectionError, CollectionJSON, ErrorJSON, Item, ItemJSON, Link, LinkJSON, QueryJSON, Template, TemplateJSON } from '../interfaces';
 import { LinkStore } from './linkstore';
 import { QueryStore } from './querystore';
 export declare abstract class CollectionBase implements Collection {
@@ -12,7 +8,7 @@ export declare abstract class CollectionBase implements Collection {
     items?: Item[];
     queries?: QueryStore;
     template?: Template;
-    error?: Error;
+    error?: CollectionError;
     constructor(collection: CollectionJSON);
     private parseOptionalProperties(collection);
     protected abstract parseLinks(links: LinkJSON[]): void;

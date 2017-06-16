@@ -1,4 +1,4 @@
-import { DataJSON } from './json';
+import {DataJSON} from './json';
 
 export interface DataAPI {}
 

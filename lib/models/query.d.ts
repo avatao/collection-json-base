@@ -1,6 +1,4 @@
-import { Collection } from '../interfaces/collection';
-import { QueryJSON } from '../interfaces/json';
-import { Query } from '../interfaces/query';
+import { Collection, Query, QueryJSON } from '../interfaces';
 import { DataStore } from './datastore';
 export declare abstract class QueryBase implements Query {
     href: string;

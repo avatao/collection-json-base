@@ -1,4 +1,4 @@
-import { Query } from '../interfaces/query';
+import { Query } from '../interfaces';
 
 export class QueryStore {
     private queries: Map<string, Query>;

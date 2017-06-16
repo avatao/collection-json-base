@@ -1,4 +1,4 @@
-import { Data } from '../interfaces/data';
+import { Data } from '../interfaces';
 export declare class DataStore {
     private dataStore;
     constructor(dataArray?: Data[]);

@@ -1,6 +1,5 @@
-import { Error } from '../interfaces/error';
-import { ErrorJSON } from '../interfaces/json';
-export declare class ErrorBase implements Error {
+import { CollectionError, ErrorJSON } from '../interfaces';
+export declare class ErrorBase implements CollectionError {
     title?: string;
     code?: string;
     message?: string;

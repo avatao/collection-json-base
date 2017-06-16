@@ -1,6 +1,4 @@
-import { Collection } from '../interfaces/collection';
-import { LinkJSON } from '../interfaces/json';
-import { Link } from '../interfaces/link';
+import {Collection, Link, LinkJSON} from '../interfaces';
 
 export abstract class LinkBase implements Link {
     public href: string;

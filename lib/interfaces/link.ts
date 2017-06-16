@@ -1,5 +1,5 @@
-import { Collection } from './collection';
-import { LinkJSON } from './json';
+import {Collection} from './collection';
+import {LinkJSON} from './json';
 
 export interface LinkAPI {
     follow(): Promise<Collection>;

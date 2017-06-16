@@ -1,7 +1,5 @@
-import { Collection } from '../interfaces/collection';
-import { QueryJSON } from '../interfaces/json';
-import { Query } from '../interfaces/query';
-import { DataStore } from './datastore';
+import {Collection, Query, QueryJSON} from '../interfaces';
+import {DataStore} from './datastore';
 
 export abstract class QueryBase implements Query {
     public href: string;

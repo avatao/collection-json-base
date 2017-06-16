@@ -1,4 +1,4 @@
-import { Data } from '../interfaces/data';
+import {Data} from '../interfaces';
 
 export class DataStore {
     private dataStore: Map<string, Data>;

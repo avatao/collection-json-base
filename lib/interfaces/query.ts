@@ -1,5 +1,5 @@
-import { DataStore } from '../models/datastore';
-import { Collection } from './collection';
+import {DataStore} from '../models';
+import {Collection} from './collection';
 
 export interface QueryData {
     href: string;

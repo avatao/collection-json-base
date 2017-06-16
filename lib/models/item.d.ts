@@ -1,6 +1,4 @@
-import { Item } from '../interfaces/item';
-import { ItemJSON, LinkJSON } from '../interfaces/json';
-import { Link } from '../interfaces/link';
+import { Item, ItemJSON, Link, LinkJSON } from '../interfaces';
 import { DataStore } from './datastore';
 import { LinkStore } from './linkstore';
 export declare abstract class ItemBase implements Item {

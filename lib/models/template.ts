@@ -1,10 +1,8 @@
-import { Collection } from '../interfaces/collection';
-import { TemplateJSON } from '../interfaces/json';
-import { TemplateAPI } from '../interfaces/template';
-import { DataStore } from './datastore';
+import {Collection, Template, TemplateJSON} from '../interfaces';
+import {DataStore} from './datastore';
 
-export abstract class TemplateBase implements TemplateAPI {
-    private dataStore: DataStore;
+export abstract class TemplateBase implements Template {
+    public dataStore: DataStore;
 
     constructor(template: TemplateJSON) {
         this.dataStore = new DataStore(template.data);
