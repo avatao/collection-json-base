@@ -5,7 +5,7 @@
     ],
     "jsRules": {},
     "rules": {
-        "curly": [true, "as-needed"],
+        "curly": true,
         "interface-name": [
             true,
             "never-prefix"

@@ -5,9 +5,11 @@ export class DataStore {
 
     constructor(dataArray?: Data[]) {
         this.dataStore = new Map();
-        if (dataArray)
-            for (const d of dataArray)
+        if (dataArray) {
+            for (const d of dataArray) {
                 this.add(d);
+            }
+        }
     }
 
     public add(data: Data) {
@@ -16,9 +18,11 @@ export class DataStore {
 
     public data(name: string): Data {
         const data = this.dataStore.get(name);
-        if (typeof data !== 'undefined')
+        if (typeof data !== 'undefined') {
             return data;
-        else
+        }
+        else {
             throw new Error('Key not found');
+        }
     }
 }

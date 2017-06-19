@@ -13,9 +13,10 @@ export class QueryStore {
 
     public query(rel: string): Query {
         const query = this.queries.get(rel);
-        if (typeof query !== 'undefined')
+        if (typeof query !== 'undefined') {
             return query;
-        else
+        } else {
             throw new Error('Key not found');
+        }
     }
 }

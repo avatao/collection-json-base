@@ -12,9 +12,10 @@ export class LinkStore {
 
     public link(rel: string): Link {
         const link = this.links.get(rel);
-        if (typeof link !== 'undefined')
+        if (typeof link !== 'undefined') {
             return link;
-        else
+        } else {
             throw new Error('Key not found');
+        }
     }
 }

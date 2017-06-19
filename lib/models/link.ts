@@ -10,9 +10,18 @@ export abstract class LinkBase implements Link {
     constructor(link: LinkJSON) {
         this.href = link.href;
         this.rel = link.rel;
-        this.name = link.name;
-        this.prompt = link.prompt;
-        this.render = link.render;
+
+        if (link.name) {
+            this.name = link.name;
+        }
+
+        if (link.prompt) {
+            this.prompt = link.prompt;
+        }
+
+        if (link.render) {
+            this.render = link.render;
+        }
     }
 
     public abstract follow(): Promise<Collection>;

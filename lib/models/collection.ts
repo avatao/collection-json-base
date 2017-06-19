@@ -30,16 +30,21 @@ export abstract class CollectionBase implements Collection {
     }
 
     private parseOptionalProperties(collection: CollectionJSON) {
-        if (collection.links)
+        if (collection.links) {
             this.parseLinks(collection.links);
-        if (collection.items)
+        }
+        if (collection.items) {
             this.parseItems(collection.items);
-        if (collection.queries)
+        }
+        if (collection.queries) {
             this.parseQueries(collection.queries);
-        if (collection.template)
+        }
+        if (collection.template) {
             this.parseTemplate(collection.template);
-        if (collection.error)
+        }
+        if (collection.error) {
             this.parseError(collection.error);
+        }
     }
 
     protected abstract parseLinks(links: LinkJSON[]): void;
@@ -49,9 +54,10 @@ export abstract class CollectionBase implements Collection {
     protected abstract parseError(error: ErrorJSON): void;
 
     public link(rel: string): Link {
-        if (typeof this.links !== 'undefined')
+        if (typeof this.links !== 'undefined') {
             return this.links.link(rel);
-        else
+        } else {
             throw new Error('There are no links stored in this Collection!');
+        }
     }
 }
