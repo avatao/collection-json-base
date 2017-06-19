@@ -19,7 +19,10 @@
     "client"
   ],
   "author": "Avatao (https://avatao.com)",
-  "contributors" : ["Balint Bokros <balint.bokros@avatao.com>", "Balazs Rostas <balazs.rostas@avatao.com>"],
+  "contributors": [
+    "Balint Bokros <balint.bokros@avatao.com>",
+    "Balazs Rostas <balazs.rostas@avatao.com>"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/avatao/collection-json.ts/issues"
