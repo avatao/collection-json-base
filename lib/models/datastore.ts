@@ -20,8 +20,7 @@ export class DataStore {
         const data = this.dataStore.get(name);
         if (typeof data !== 'undefined') {
             return data;
-        }
-        else {
+        } else {
             throw new Error('Key not found');
         }
     }
