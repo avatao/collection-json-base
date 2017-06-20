@@ -1,3 +1,4 @@
+import {Observable} from 'rxjs/Observable';
 import {DataStore} from '../models';
 import {Collection} from './collection';
 
@@ -6,8 +7,8 @@ export interface TemplateData {
 }
 
 export interface TemplateAPI {
-    submit(): Promise<Collection>;
-    update(): Promise<Collection>;
+    submit(): Observable<Collection>;
+    update(): Observable<Collection>;
 }
 
 export interface Template extends TemplateData, TemplateAPI {}

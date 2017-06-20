@@ -1,3 +1,4 @@
+import {Observable} from 'rxjs/Observable';
 import {Collection, Template, TemplateJSON} from '../interfaces';
 import {DataStore} from './datastore';
 
@@ -8,6 +9,6 @@ export abstract class TemplateBase implements Template {
         this.dataStore = new DataStore(template.data);
     }
 
-    public abstract submit(): Promise<Collection>;
-    public abstract update(): Promise<Collection>;
+    public abstract submit(): Observable<Collection>;
+    public abstract update(): Observable<Collection>;
 }

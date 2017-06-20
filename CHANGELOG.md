@@ -4,6 +4,7 @@
 * Modified tsconfig.json so it will work with angular
 * Added scripts for building and publishing
 * Changed coding style, using curly braces all the time
+* Using [Observable](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html) instead of Promise
 * First published version
 
 1.0.0-alpha.2 / 2017-06-16

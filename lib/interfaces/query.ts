@@ -1,3 +1,4 @@
+import {Observable} from 'rxjs/Observable';
 import {DataStore} from '../models';
 import {Collection} from './collection';
 
@@ -10,7 +11,7 @@ export interface QueryData {
 }
 
 export interface QueryAPI {
-    send(): Promise<Collection>;
+    send(): Observable<Collection>;
 }
 
 export interface Query extends QueryData, QueryAPI {}

@@ -1,3 +1,4 @@
+import {Observable} from 'rxjs/Observable';
 import {Collection, Query, QueryJSON} from '../interfaces';
 import {DataStore} from './datastore';
 
@@ -16,5 +17,5 @@ export abstract class QueryBase implements Query {
         this.dataStore = query.data && new DataStore(query.data);
     }
 
-    public abstract send(): Promise<Collection>;
+    public abstract send(): Observable<Collection>;
 }

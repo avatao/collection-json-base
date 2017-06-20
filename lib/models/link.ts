@@ -1,3 +1,4 @@
+import {Observable} from 'rxjs/Observable';
 import {Collection, Link, LinkJSON} from '../interfaces';
 
 export abstract class LinkBase implements Link {
@@ -24,5 +25,5 @@ export abstract class LinkBase implements Link {
         }
     }
 
-    public abstract follow(): Promise<Collection>;
+    public abstract follow(): Observable<Collection>;
 }
