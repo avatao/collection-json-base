@@ -1,5 +1,5 @@
 {
-  "name": "collection-json.ts",
+  "name": "collection-json-base",
   "version": "1.0.0-alpha.2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -14,10 +14,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/avatao/collection-json.ts.git"
+    "url": "git+https://github.com/avatao/collection-json-base.git"
   },
   "keywords": [
-    "collection-json.ts",
+    "collection-json-base",
     "collection-json",
     "typescript",
     "client"
@@ -29,9 +29,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/avatao/collection-json.ts/issues"
+    "url": "https://github.com/avatao/collection-json-base/issues"
   },
-  "homepage": "https://github.com/avatao/collection-json.ts#readme",
+  "homepage": "https://github.com/avatao/collection-json-base#readme",
   "dependencies": {},
   "devDependencies": {
     "copyfiles": "^1.2.0",
