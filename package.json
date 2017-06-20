@@ -1,16 +1,16 @@
 {
   "name": "collection-json-base",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "main": "index.js",
   "types": "index.d.ts",
   "description": "Collection+JSON TypeScript Client Library",
   "scripts": {
     "clean": "rimraf ./dist",
-    "copy": "copyfiles package.json dist",
+    "copy": "copyfiles package.json README.md LICENSE dist",
     "tsc": "tsc",
     "build": "npm run clean && npm run tsc",
-    "publish": "npm run build && npm run copy && cd dist && npm publish",
-    "pack": "npm run build && npm run copy && cd dist && npm pack"
+    "pack": "npm run build && npm run copy && cd dist && npm pack",
+    "upload": "npm run build && npm run copy && cd dist && npm publish"
   },
   "repository": {
     "type": "git",
