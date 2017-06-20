@@ -1,3 +1,11 @@
+1.0.0-alpha.3 / 2017-06-20
+==================
+
+* Modified tsconfig.json so it will work with angular
+* Added scripts for building and publishing
+* Changed coding style, using curly braces all the time
+* First published version
+
 1.0.0-alpha.2 / 2017-06-16
 ==================
 

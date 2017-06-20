@@ -21,8 +21,7 @@ export abstract class ItemBase implements Item {
     public link(rel: string): Link {
         if (typeof this.links !== 'undefined') {
             return this.links.link(rel);
-        }
-        else {
+        } else {
             throw new Error('There are no links stored in this Item!');
         }
     }
