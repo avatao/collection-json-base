@@ -1,3 +1,8 @@
+1.0.0-alpha.5 / 2017-06-20
+==================
+
+* Added [rxjs](https://www.npmjs.com/package/rxjs) to peerDependencies
+
 1.0.0-alpha.4 / 2017-06-20
 ==================
 
