@@ -5,8 +5,12 @@
   "types": "dist/index.d.ts",
   "description": "Collection+JSON TypeScript Client Library",
   "scripts": {
-    "prepublish": "npm run tsc",
-    "tsc": "tsc"
+    "clean": "rimraf ./dist",
+    "copy": "copyfiles package.json dist",
+    "tsc": "tsc",
+    "build": "npm run clean && npm run tsc",
+    "publish": "npm run build && npm run copy && cd dist && npm publish",
+    "pack": "npm run build && npm run copy && cd dist && npm pack"
   },
   "repository": {
     "type": "git",
@@ -30,6 +34,8 @@
   "homepage": "https://github.com/avatao/collection-json.ts#readme",
   "dependencies": {},
   "devDependencies": {
+    "copyfiles": "^1.2.0",
+    "rimraf": "^2.6.1",
     "tslint": "^5.4.3",
     "typescript": "^2.3.4"
   }
