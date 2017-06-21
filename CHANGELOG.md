@@ -1,3 +1,8 @@
+1.0.0-alpha.9 / 2017-06-21
+==================
+
+* Query send method now takes an array of parameter objects
+
 1.0.0-alpha.8 / 2017-06-21
 ==================
 
