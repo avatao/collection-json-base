@@ -1,3 +1,8 @@
+1.0.0-alpha.10 / 2017-06-21
+==================
+
+* Query method is implemented on the CollectionBase class
+
 1.0.0-alpha.9 / 2017-06-21
 ==================
 
