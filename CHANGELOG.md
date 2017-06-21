@@ -1,3 +1,8 @@
+1.0.0-alpha.6 / 2017-06-21
+==================
+
+* Added CollectionConfiguration and CollectionConfigurationManager classes
+
 1.0.0-alpha.5 / 2017-06-20
 ==================
 
