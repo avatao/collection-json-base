@@ -1,3 +1,8 @@
+1.0.0-alpha.8 / 2017-06-21
+==================
+
+* Iterators and generators are now correctly transpiled
+
 1.0.0-alpha.7 / 2017-06-21
 ==================
 
