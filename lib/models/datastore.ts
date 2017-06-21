@@ -25,6 +25,8 @@ export class DataStore {
         }
     }
 
-    [Symbol.iterator]() {return this.dataStore.values()}
+    [Symbol.iterator]() {
+        return this.dataStore.values();
+    }
 
 }

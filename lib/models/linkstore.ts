@@ -19,5 +19,7 @@ export class LinkStore {
         }
     }
 
-    [Symbol.iterator]() {return this.links.values()}
+    [Symbol.iterator]() {
+        return this.links.values();
+    }
 }

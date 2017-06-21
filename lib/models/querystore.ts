@@ -20,6 +20,8 @@ export class QueryStore {
         }
     }
 
-    [Symbol.iterator]() {return this.queries.values()}
+    [Symbol.iterator]() {
+        return this.queries.values();
+    }
 
 }
