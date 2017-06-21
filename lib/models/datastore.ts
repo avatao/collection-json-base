@@ -24,4 +24,7 @@ export class DataStore {
             throw new Error('Key not found');
         }
     }
+
+    [Symbol.iterator]() {return this.dataStore.values()}
+
 }

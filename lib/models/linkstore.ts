@@ -18,4 +18,6 @@ export class LinkStore {
             throw new Error('Key not found');
         }
     }
+
+    [Symbol.iterator]() {return this.links.values()}
 }

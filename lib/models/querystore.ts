@@ -19,4 +19,7 @@ export class QueryStore {
             throw new Error('Key not found');
         }
     }
+
+    [Symbol.iterator]() {return this.queries.values()}
+
 }
