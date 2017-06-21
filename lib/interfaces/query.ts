@@ -11,7 +11,7 @@ export interface QueryData {
 }
 
 export interface QueryAPI {
-    send(): Observable<Collection>;
+    send(params: { name: string, value: string | number | boolean }[]): Observable<Collection>;
 }
 
 export interface Query extends QueryData, QueryAPI {}

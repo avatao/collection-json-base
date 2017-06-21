@@ -17,5 +17,5 @@ export abstract class QueryBase implements Query {
         this.dataStore = query.data && new DataStore(query.data);
     }
 
-    public abstract send(): Observable<Collection>;
+    public abstract send(params: { name: string, value: string | number | boolean }[]): Observable<Collection>;
 }
