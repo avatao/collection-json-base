@@ -13,6 +13,7 @@ import {
 } from '../interfaces';
 import {LinkStore} from './linkstore';
 import {QueryStore} from './querystore';
+import {Query} from '../interfaces/query';
 
 export abstract class CollectionBase implements Collection {
     public version: string;
@@ -58,6 +59,14 @@ export abstract class CollectionBase implements Collection {
             return this.links.link(rel);
         } else {
             throw new Error('There are no links stored in this Collection!');
+        }
+    }
+
+    public query(rel: string): Query {
+        if (typeof this.queries !== 'undefined') {
+            return this.queries.query(rel);
+        } else {
+            throw new Error('There are no queries stored in this Collection!');
         }
     }
 }

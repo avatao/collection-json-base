@@ -3,6 +3,7 @@ import {CollectionError} from './error';
 import {Item} from './item';
 import {Link} from './link';
 import {Template} from './template';
+import {Query} from './query';
 
 export interface CollectionData {
     version: string;
@@ -16,6 +17,7 @@ export interface CollectionData {
 
 export interface CollectionAPI {
     link(rel: string): Link;
+    query(rel: string): Query;
 }
 
 export interface Collection extends CollectionData, CollectionAPI {}
