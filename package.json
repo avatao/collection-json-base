@@ -2,7 +2,7 @@
   "name": "collection-json-base",
   "version": "1.0.0-alpha.11",
   "main": "index.js",
-  "types": "index.d.ts",
+  "types": ["index.d.ts", "valid-url"],
   "description": "Collection+JSON TypeScript Client Library",
   "scripts": {
     "clean": "rimraf ./dist",
@@ -33,9 +33,11 @@
   },
   "homepage": "https://github.com/avatao/collection-json-base#readme",
   "dependencies": {
-    "rxjs": "^5.1.0"
+    "rxjs": "^5.1.0",
+    "valid-url": "^1.0.9"
   },
   "devDependencies": {
+    "@types/valid-url": "^1.0.2",
     "copyfiles": "^1.2.0",
     "rimraf": "^2.6.1",
     "tslint": "^5.4.3",
