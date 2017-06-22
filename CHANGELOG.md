@@ -1,3 +1,8 @@
+1.0.0-alpha.11 / 2017-06-22
+==================
+
+* Added Validations Array [extension](https://github.com/collection-json/extensions/blob/master/validation_array.md)
+
 1.0.0-alpha.10 / 2017-06-21
 ==================
 
