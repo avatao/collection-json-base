@@ -6,8 +6,8 @@ export class DataStore {
     constructor(dataArray?: Data[]) {
         this.dataStore = new Map();
         if (dataArray) {
-            for (const d of dataArray) {
-                this.add(d);
+            for (const data of dataArray) {
+                this.add(data);
             }
         }
     }
