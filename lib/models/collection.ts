@@ -14,6 +14,7 @@ import {
 import {LinkStore} from './linkstore';
 import {QueryStore} from './querystore';
 import {Query} from '../interfaces/query';
+import {isUri} from 'valid-url';
 
 export abstract class CollectionBase implements Collection {
     public version: string;
@@ -26,7 +27,15 @@ export abstract class CollectionBase implements Collection {
 
     constructor(collection: CollectionJSON) {
         this.version = collection.version || '1.0';
-        this.href = collection.href;
+
+        if (typeof collection.href !== 'undefined') {
+            if (!isUri(collection.href)) {
+                throw new Error('The supplied href must be a valid uri!')
+            } else {
+                this.href = collection.href;
+            }
+        }
+
         this.parseOptionalProperties(collection);
     }
 
