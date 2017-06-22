@@ -8,6 +8,8 @@ export abstract class LinkBase implements Link {
     public prompt?: string;
     public render?: string;
 
+    public abstract follow(): Observable<Collection>;
+
     constructor(link: LinkJSON) {
         this.href = link.href;
         this.rel = link.rel;
@@ -25,5 +27,26 @@ export abstract class LinkBase implements Link {
         }
     }
 
-    public abstract follow(): Observable<Collection>;
+    public json(): LinkJSON {
+
+        const result: LinkJSON = {
+            href: this.href,
+            rel: this.rel
+        };
+
+        if (this.name) {
+            result.name = this.name;
+        }
+
+        if (this.prompt) {
+            result.prompt = this.prompt;
+        }
+
+        if (this.render) {
+            result.render = this.render;
+        }
+
+        return result;
+    }
+
 }

@@ -1,6 +1,8 @@
 import {Query} from '../interfaces';
+import {QueryStoreAPI} from '../interfaces/querystore';
+import {QueryJSON} from '../interfaces/json';
 
-export class QueryStore {
+export class QueryStore implements QueryStoreAPI {
     private queries: Map<string, Query>;
 
     constructor() {
@@ -18,6 +20,16 @@ export class QueryStore {
         } else {
             throw new Error('Key not found');
         }
+    }
+
+    public json(): QueryJSON[] {
+        const result: QueryJSON[] = [];
+
+        for (const query of this) {
+            result.push(query.json())
+        }
+
+        return result;
     }
 
     [Symbol.iterator]() {

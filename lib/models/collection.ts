@@ -78,4 +78,34 @@ export abstract class CollectionBase implements Collection {
             throw new Error('There are no queries stored in this Collection!');
         }
     }
+
+    public json(): {collection: CollectionJSON} {
+
+        const result: {collection: CollectionJSON} = {collection: {version: this.version, href: this.href}};
+
+        if (this.links) {
+            result.collection.links = this.links.json();
+        }
+
+        if (this.items) {
+            result.collection.items = [];
+            for (const item of this.items) {
+                result.collection.items.push(item.json())
+            }
+        }
+
+        if (this.queries) {
+            result.collection.queries = this.queries.json();
+        }
+
+        if (this.template) {
+            result.collection.template = this.template.json();
+        }
+
+        if (this.error) {
+            result.collection.error = this.error.json();
+        }
+
+        return result;
+    }
 }

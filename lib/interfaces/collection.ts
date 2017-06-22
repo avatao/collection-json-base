@@ -4,6 +4,7 @@ import {Item} from './item';
 import {Link} from './link';
 import {Template} from './template';
 import {Query} from './query';
+import {CollectionJSON} from './json';
 
 export interface CollectionData {
     version: string;
@@ -18,6 +19,7 @@ export interface CollectionData {
 export interface CollectionAPI {
     link(rel: string): Link;
     query(rel: string): Query;
+    json(): {collection: CollectionJSON}
 }
 
 export interface Collection extends CollectionData, CollectionAPI {}

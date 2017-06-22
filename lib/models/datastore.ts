@@ -1,15 +1,12 @@
 import {Data} from '../interfaces';
+import {DataStoreAPI} from '../interfaces/datastore';
+import {DataJSON} from '../interfaces/json';
 
-export class DataStore {
+export class DataStore implements DataStoreAPI {
     private dataStore: Map<string, Data>;
 
-    constructor(dataArray?: Data[]) {
+    constructor() {
         this.dataStore = new Map();
-        if (dataArray) {
-            for (const data of dataArray) {
-                this.add(data);
-            }
-        }
     }
 
     public add(data: Data) {
@@ -23,6 +20,16 @@ export class DataStore {
         } else {
             throw new Error('Key not found');
         }
+    }
+
+    public json(): DataJSON[] {
+        const result = [];
+
+        for (const data of this) {
+            result.push(data.json())
+        }
+
+        return result;
     }
 
     [Symbol.iterator]() {

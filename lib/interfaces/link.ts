@@ -4,6 +4,7 @@ import {LinkJSON} from './json';
 
 export interface LinkAPI {
     follow(): Observable<Collection>;
+    json(): LinkJSON
 }
 
 export interface Link extends LinkJSON, LinkAPI {}

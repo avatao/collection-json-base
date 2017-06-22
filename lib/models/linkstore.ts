@@ -1,6 +1,8 @@
 import {Link} from '../interfaces';
+import {LinkJSON} from '../interfaces/json';
+import {LinkStoreAPI} from '../interfaces/linkstore';
 
-export class LinkStore {
+export class LinkStore implements LinkStoreAPI {
     private links: Map<string, Link>;
     constructor() {
         this.links = new Map();
@@ -17,6 +19,16 @@ export class LinkStore {
         } else {
             throw new Error('Key not found');
         }
+    }
+
+    public json(): LinkJSON[] {
+        const result: LinkJSON[] = [];
+
+        for (const link of this) {
+            result.push(link.json())
+        }
+
+        return result;
     }
 
     [Symbol.iterator]() {

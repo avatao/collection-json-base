@@ -19,7 +19,7 @@ export interface DataJSON {
     name: string;
     value?: string | number | boolean;
     prompt?: string;
-    validations?: ValidationJSON
+    validations?: ValidationJSON[]
 }
 
 export interface ErrorJSON {
