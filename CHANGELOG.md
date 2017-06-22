@@ -1,3 +1,11 @@
+1.0.0-alpha.12 / 2017-06-22
+==================
+
+* Validating href to be a valid URI
+* Implemented json method on all classes to help serialisation
+* Created DataBase class
+
+
 1.0.0-alpha.11 / 2017-06-22
 ==================
 
