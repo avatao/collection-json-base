@@ -8,10 +8,18 @@ export interface CollectionJSON {
     error?: ErrorJSON;
 }
 
+export interface ValidationJSON {
+    name: string
+    prompt?: string
+    arguments: {name: string, value: string | number | boolean}[]
+    message?: string
+}
+
 export interface DataJSON {
     name: string;
     value?: string | number | boolean;
     prompt?: string;
+    validations?: ValidationJSON
 }
 
 export interface ErrorJSON {
@@ -45,3 +53,5 @@ export interface QueryJSON {
 export interface TemplateJSON {
     data: DataJSON[];
 }
+
+
