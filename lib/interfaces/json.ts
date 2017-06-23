@@ -11,7 +11,7 @@ export interface CollectionJSON {
 export interface ValidationJSON {
     name: string
     prompt?: string
-    arguments: {name: string, value: string | number | boolean}[]
+    arguments?: {name: string, value: string | number | boolean}[]
     message?: string
 }
 
