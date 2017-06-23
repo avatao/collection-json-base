@@ -1,3 +1,8 @@
+1.0.0-alpha.14 / 2017-06-23
+==================
+
+* Added set and setAll methods to Template base class
+
 1.0.0-alpha.13 / 2017-06-23
 ==================
 
