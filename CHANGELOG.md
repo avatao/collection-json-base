@@ -1,3 +1,8 @@
+1.0.0-alpha.13 / 2017-06-23
+==================
+
+* Added data methods to Template and Item classes
+
 1.0.0-alpha.12 / 2017-06-22
 ==================
 
