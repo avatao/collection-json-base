@@ -1,3 +1,8 @@
+1.0.0-alpha.16 / 2017-06-23
+==================
+
+* Moved validations extension check here from angular implementation
+
 1.0.0-alpha.15 / 2017-06-23
 ==================
 
