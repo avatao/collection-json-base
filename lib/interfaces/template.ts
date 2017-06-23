@@ -15,6 +15,7 @@ export interface TemplateAPI {
     data(name: string): Data;
     set(name: string, value: string | number | boolean ): void;
     setAll(body: {name: string, value: string | number | boolean}[]): void;
+    validationsExtensionCheck(): void;
 }
 
 export interface Template extends TemplateData, TemplateAPI {}
