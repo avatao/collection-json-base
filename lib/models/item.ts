@@ -2,8 +2,10 @@ import {Item, ItemJSON, Link, LinkJSON} from '../interfaces';
 import {DataStore} from './datastore';
 import {LinkStore} from './linkstore';
 import {DataJSON} from '../interfaces/json';
+import {Data} from '../interfaces/data';
 
 export abstract class ItemBase implements Item {
+
     public href: string;
     public links?: LinkStore;
     public dataStore?: DataStore;
@@ -46,5 +48,13 @@ export abstract class ItemBase implements Item {
         }
 
         return result;
+    }
+
+    public data(name: string): Data {
+        if (typeof this.dataStore !== 'undefined') {
+            return this.dataStore.data(name);
+        } else {
+            throw new Error(`This item with the href: ${this.href} has no data array!`)
+        }
     }
 }
