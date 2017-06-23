@@ -1,3 +1,8 @@
+1.0.0-alpha.15 / 2017-06-23
+==================
+
+* ValidationJSON's arguments property is optional
+
 1.0.0-alpha.14 / 2017-06-23
 ==================
 

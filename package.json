@@ -1,6 +1,6 @@
 {
   "name": "collection-json-base",
-  "version": "1.0.0-alpha.14",
+  "version": "1.0.0-alpha.15",
   "main": "index.js",
   "types": ["index.d.ts", "valid-url"],
   "description": "Collection+JSON TypeScript Client Library",
