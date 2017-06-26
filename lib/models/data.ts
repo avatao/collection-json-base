@@ -5,6 +5,8 @@ export class DataBase implements Data {
     public name: string;
     public value?: string | number | boolean;
     public prompt?: string;
+    public regexp?: string;
+    public required?: boolean;
     public validations?: ValidationJSON[];
 
     constructor(data: DataJSON) {
@@ -16,6 +18,14 @@ export class DataBase implements Data {
 
         if (data.prompt) {
             this.prompt = data.prompt;
+        }
+
+        if (data.regexp) {
+            this.regexp = data.regexp;
+        }
+
+        if (data.required) {
+            this.required = data.required;
         }
 
         if (data.validations) {
@@ -32,6 +42,14 @@ export class DataBase implements Data {
 
         if (this.prompt) {
             result.prompt = this.prompt;
+        }
+
+        if (this.regexp) {
+            result.regexp = this.regexp;
+        }
+
+        if (this.required) {
+            result.required = this.required;
         }
 
         if (this.validations) {
