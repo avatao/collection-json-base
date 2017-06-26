@@ -4,6 +4,8 @@ import {DataJSON, ValidationJSON} from '../interfaces/json';
 export class DataBase implements Data {
     public name: string;
     public value?: string | number | boolean;
+    public array?: (string | number | boolean)[];
+    public object?: any;
     public prompt?: string;
     public regexp?: string;
     public required?: boolean;
@@ -14,6 +16,14 @@ export class DataBase implements Data {
 
         if (data.value) {
             this.value = data.value;
+        }
+
+        if (data.array) {
+            this.array = data.array;
+        }
+
+        if (data.object) {
+            this.object = data.object;
         }
 
         if (data.prompt) {
@@ -38,6 +48,14 @@ export class DataBase implements Data {
 
         if (this.value) {
             result.value = this.value;
+        }
+
+        if (this.array) {
+            result.array = this.array;
+        }
+
+        if (this.object) {
+            result.object = this.object;
         }
 
         if (this.prompt) {
