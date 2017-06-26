@@ -15,7 +15,8 @@
     "sourceMap": false,
     "strict": true,
     "outDir": "./dist",
-    "rootDir": "./lib"
+    "rootDir": "./",
+    "types": ["mocha", "chai", "valid-url"]
   },
   "exclude": [
     "dist",

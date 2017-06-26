@@ -13,7 +13,8 @@
     "tsc": "tsc",
     "build": "npm run clean && npm run tsc",
     "pack": "npm run build && npm run copy && cd dist && npm pack",
-    "upload": "npm run build && npm run copy && cd dist && npm publish"
+    "upload": "npm run build && npm run copy && cd dist && npm publish",
+    "test": "mocha --compilers ts:ts-node/register 'tests/**/*.ts'"
   },
   "repository": {
     "type": "git",
@@ -40,9 +41,14 @@
     "valid-url": "^1.0.9"
   },
   "devDependencies": {
+    "@types/chai": "^4.0.1",
+    "@types/mocha": "^2.2.41",
     "@types/valid-url": "^1.0.2",
+    "chai": "^4.0.2",
     "copyfiles": "^1.2.0",
+    "mocha": "^3.4.2",
     "rimraf": "^2.6.1",
+    "ts-node": "^3.1.0",
     "tslint": "^5.4.3",
     "typescript": "~2.3.3"
   },
