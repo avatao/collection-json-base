@@ -1,3 +1,8 @@
+1.0.0-alpha.20 / 2017-06-26
+==================
+
+* Added tests for template validations
+
 1.0.0-alpha.19 / 2017-06-26
 ==================
 
