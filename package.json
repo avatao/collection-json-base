@@ -1,6 +1,6 @@
 {
   "name": "collection-json-base",
-  "version": "1.0.0-alpha.18",
+  "version": "1.0.0-alpha.19",
   "main": "index.js",
   "types": [
     "index.d.ts",

@@ -1,3 +1,11 @@
+1.0.0-alpha.19 / 2017-06-26
+==================
+
+* Added value types [extension](https://github.com/mamund/collection-json/blob/master/extensions/value-types.md)
+* Template validations are now checking the values of the array as well
+* Fixed regexp error message
+
+
 1.0.0-alpha.18 / 2017-06-26
 ==================
 
