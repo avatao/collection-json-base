@@ -12,8 +12,8 @@ export abstract class TemplateBase implements Template {
         if (typeof data.value !== 'undefined') {
             if (typeof data.regexp !== 'undefined') {
                 if (!RegExp(String(data.regexp)).test(String(data.value))) {
-                    throw new Error(`The data with the name: ${data.name} has the value: ${data.value} and the value
-                   doesn't match the supplied regexp: ${data.regexp}`)
+                    throw new Error(`The data with the name: '${data.name}' has the value: '${data.value}'.` +
+                    `\nThis doesn't match the supplied regexp: '${data.regexp}'`)
                 }
             }
         } else if (data.required === true) {
