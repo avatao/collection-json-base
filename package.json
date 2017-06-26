@@ -2,7 +2,10 @@
   "name": "collection-json-base",
   "version": "1.0.0-alpha.17",
   "main": "index.js",
-  "types": ["index.d.ts", "valid-url"],
+  "types": [
+    "index.d.ts",
+    "valid-url"
+  ],
   "description": "Collection+JSON TypeScript Client Library",
   "scripts": {
     "clean": "rimraf ./dist",
