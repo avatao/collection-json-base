@@ -1,3 +1,9 @@
+1.0.0-alpha.18 / 2017-06-26
+==================
+
+* Hotfix: Data interface, constructor and json methods now properly using
+the template validation extension properties
+
 1.0.0-alpha.17 / 2017-06-26
 ==================
 
