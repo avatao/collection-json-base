@@ -15,11 +15,12 @@
     "sourceMap": false,
     "strict": true,
     "outDir": "./dist",
-    "rootDir": "./",
+    "rootDir": "./lib",
     "types": ["mocha", "chai", "valid-url"]
   },
   "exclude": [
-    "dist",
-    "node_modules"
+    "./dist",
+    "./node_modules",
+    "./lib/tests"
   ]
 }

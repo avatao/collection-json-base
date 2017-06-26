@@ -1,7 +1,7 @@
 import {expect} from 'chai';
-import {DataJSON, ValidationJSON} from '../lib/interfaces/json';
-import {DataBase} from '../lib/models/data';
-import {TemplateBase} from '../lib/models/template';
+import {DataJSON, ValidationJSON} from '../interfaces/json';
+import {DataBase} from '../models/data';
+import {TemplateBase} from '../models/template';
 
 
 class MockData extends DataBase {}
