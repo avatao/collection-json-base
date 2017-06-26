@@ -1,3 +1,10 @@
+1.0.0-alpha.17 / 2017-06-26
+==================
+
+* Refactored template validation logic (better performance)
+* Implemented template validation [extension](https://github.com/mamund/collection-json/blob/master/extensions/template-validation.md)
+
+
 1.0.0-alpha.16 / 2017-06-23
 ==================
 
