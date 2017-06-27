@@ -1,3 +1,11 @@
+1.0.0-beta.1 / 2017-06-27
+==================
+
+* Finished tests for template validation and validations array extension
+* Fixed issues during testing
+* Connected travis
+* The API is stabilizing (hence this is the first beta version)
+
 1.0.0-alpha.20 / 2017-06-26
 ==================
 
