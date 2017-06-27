@@ -6,7 +6,7 @@ import {TemplateBase} from '../../models/template';
 
 class MockData extends DataBase {}
 
-describe('Validations Array extension check with values', () => {
+describe('Validations Array extension check with arrays', () => {
     describe('Presence', () => {
 
         const validations: ValidationJSON[] = [
@@ -19,7 +19,7 @@ describe('Validations Array extension check with values', () => {
 
         const dataJson: DataJSON = {
             name: 'Test',
-            value: undefined,
+            array: undefined,
             validations: validations
         };
 
@@ -31,7 +31,7 @@ describe('Validations Array extension check with values', () => {
         });
 
         it('should pass the presence test', () => {
-            dataJson.value = 'something';
+            dataJson.array = ['something'];
             const data = new MockData(dataJson);
             expect(() => {
                 TemplateBase.validationsArrayExtensionCheck(data);
@@ -44,7 +44,7 @@ describe('Validations Array extension check with values', () => {
         const validations: ValidationJSON[] = [
             {
                 name: 'inclusion',
-                prompt: 'Value must be hello or world',
+                prompt: 'Array values must be either hello or world',
                 arguments: [
                     {
                         name: 'option',
@@ -55,33 +55,33 @@ describe('Validations Array extension check with values', () => {
                         value: 'world'
                     }
                 ],
-                message: 'The value must be either hello or world!'
+                message: 'Invalid array values! Only the word hello and world is accepted'
             }
         ];
         const dataJson: DataJSON = {
             name: 'Test',
-            value: 'nothello',
+            array: ['nothello', 'hello'],
             validations: validations
         };
 
         it('should fail the inclusion test', () => {
-            dataJson.value = 'nothello';
+            dataJson.array = ['nothello', 'hello'];
             const data = new MockData(dataJson);
             expect(() => {
                 TemplateBase.validationsArrayExtensionCheck(data);
-            }).to.throw(Error, 'The value must be either hello or world!');
+            }).to.throw(Error, 'Invalid array values! Only the word hello and world is accepted');
         });
 
-        it('should pass the inclusion test (first word)', () => {
-            dataJson.value = 'hello';
+        it('should pass the inclusion test (one word)', () => {
+            dataJson.array = ['hello'];
             const data = new MockData(dataJson);
             expect(() => {
                 TemplateBase.validationsArrayExtensionCheck(data);
             }).to.not.throw();
         });
 
-        it('should pass the inclusion test (second word)', () => {
-            dataJson.value = 'world';
+        it('should pass the inclusion test (multiple words)', () => {
+            dataJson.array = ['world', 'hello', 'world', 'hello'];
             const data = new MockData(dataJson);
             expect(() => {
                 TemplateBase.validationsArrayExtensionCheck(data);
@@ -94,7 +94,7 @@ describe('Validations Array extension check with values', () => {
         const validations: ValidationJSON[] = [
             {
                 name: 'exclusion',
-                prompt: 'Value can not be hello or world',
+                prompt: 'Values in the array cannot be hello or world',
                 arguments: [
                     {
                         name: 'option',
@@ -105,33 +105,33 @@ describe('Validations Array extension check with values', () => {
                         value: 'world'
                     }
                 ],
-                message: 'The value must not be hello or world!'
+                message: 'Invalid values in the array! The values must not be hello or world'
             }
         ];
         const dataJson: DataJSON = {
             name: 'Test',
-            value: 'hello',
+            array: ['hello', 'somethingelse', 'thisisvalid'],
             validations: validations
         };
 
-        it('should fail the exclusion test (first word)', () => {
-            dataJson.value = 'hello';
+        it('should fail the exclusion test (using first blacklist word)', () => {
+            dataJson.array = ['hello', 'somethingelse', 'thisisvalid'];
             const data = new MockData(dataJson);
             expect(() => {
                 TemplateBase.validationsArrayExtensionCheck(data);
-            }).to.throw(Error, 'The value must not be hello or world!');
+            }).to.throw(Error, 'Invalid values in the array! The values must not be hello or world');
         });
 
-        it('should fail the exclusion test (second word)', () => {
-            dataJson.value = 'world';
+        it('should fail the exclusion test (using second blacklist word)', () => {
+            dataJson.array = ['nothello', 'somethingelse', 'world'];
             const data = new MockData(dataJson);
             expect(() => {
                 TemplateBase.validationsArrayExtensionCheck(data);
-            }).to.throw(Error, 'The value must not be hello or world!');
+            }).to.throw(Error, 'Invalid values in the array! The values must not be hello or world');
         });
 
         it('should pass the exclusion test', () => {
-            dataJson.value = 'nothello';
+            dataJson.array = ['nothello', 'validvalue'];
             const data = new MockData(dataJson);
             expect(() => {
                 TemplateBase.validationsArrayExtensionCheck(data);
@@ -144,7 +144,7 @@ describe('Validations Array extension check with values', () => {
         const validations: ValidationJSON[] = [
             {
                 name: 'format',
-                prompt: 'Value must be a valid email',
+                prompt: 'Values in the array must be valid emails',
                 arguments: [
                     {
                         name: 'regex',
@@ -152,25 +152,25 @@ describe('Validations Array extension check with values', () => {
                         '(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$'
                     }
                 ],
-                message: 'The supplied value is not a valid email address!'
+                message: 'Invalid values in the array! The values must be valid emails'
             }
         ];
         const dataJson: DataJSON = {
             name: 'Test',
-            value: 'bad.example.com',
+            array: ['bad.example.com', 'another@bad', 'thisisbad.to'],
             validations: validations
         };
 
-        it('should fail the format test (invalid email)', () => {
-            dataJson.value = 'bad.example.com';
+        it('should fail the format test (invalid emails in the array)', () => {
+            dataJson.array = ['bad.example.com', 'another@bad', 'thisisbad.to', 'thisis@valid.com'];
             const data = new MockData(dataJson);
             expect(() => {
                 TemplateBase.validationsArrayExtensionCheck(data);
-            }).to.throw(Error, 'The supplied value is not a valid email address!');
+            }).to.throw(Error, 'Invalid values in the array! The values must be valid emails');
         });
 
-        it('should pass the format test (valid email)', () => {
-            dataJson.value = 'good@example.com';
+        it('should pass the format test (valid emails)', () => {
+            dataJson.array = ['good@example.com', 'goodtoo@good.at'];
             const data = new MockData(dataJson);
             expect(() => {
                 TemplateBase.validationsArrayExtensionCheck(data);
@@ -207,7 +207,7 @@ describe('Validations Array extension check with values', () => {
         const validations: ValidationJSON[] = [
             {
                 name: 'file_type',
-                prompt: 'file must be either png or jpg/jpeg',
+                prompt: 'The files in the array must be either png or jpg/jpeg',
                 arguments: [
                     {
                         name: 'option',
@@ -222,34 +222,26 @@ describe('Validations Array extension check with values', () => {
                         value: 'png'
                     }
                 ],
-                message: 'The supplied file is invalid (must be a png or a jpg/jpeg)'
+                message: 'Invalid values in the array! Every file in the array must be either png or jpg/jpeg'
             }
         ];
 
         const dataJson: DataJSON = {
             name: 'Test',
-            value: pngImage,
+            array: [pngImage, svgImage],
             validations: validations
         };
 
-        it('should fail the file_type test (svg)', () => {
-            dataJson.value = svgImage;
+        it('should fail the file_type test (svg and png in the array)', () => {
+            dataJson.array = [pngImage, svgImage];
             const data = new MockData(dataJson);
             expect(() => {
                 TemplateBase.validationsArrayExtensionCheck(data);
-            }).to.throw(Error, 'The supplied file is invalid (must be a png or a jpg/jpeg)');
+            }).to.throw(Error, 'Invalid values in the array! Every file in the array must be either png or jpg/jpeg');
         });
 
-        it('should pass the file_type test (png)', () => {
-            dataJson.value = pngImage;
-            const data = new MockData(dataJson);
-            expect(() => {
-                TemplateBase.validationsArrayExtensionCheck(data);
-            }).to.not.throw();
-        });
-
-        it('should pass the file_type test (jpeg)', () => {
-            dataJson.value = jpegImage;
+        it('should pass the file_type test (png and jpeg in the array)', () => {
+            dataJson.array = [pngImage, jpegImage];
             const data = new MockData(dataJson);
             expect(() => {
                 TemplateBase.validationsArrayExtensionCheck(data);
@@ -261,7 +253,7 @@ describe('Validations Array extension check with values', () => {
         const validations: ValidationJSON[] = [
             {
                 name: 'file_size',
-                prompt: 'file can\'t be larger than 850 bytes',
+                prompt: 'The files in the array can\'t be larger than 850 bytes',
                 arguments: [
                     {
                         name: 'lower_bound',
@@ -272,34 +264,26 @@ describe('Validations Array extension check with values', () => {
                         value: '850'
                     }
                 ],
-                message: 'The supplied file is larger than 850 bytes'
+                message: 'Invalid files in the array! The files can\'t be larger than 850 bytes'
             }
         ];
 
         const dataJson: DataJSON = {
             name: 'Test',
-            value: pngImage,
+            array: [jpegImage, pngImage, svgImage],
             validations: validations
         };
 
-        it('should fail the file_size test (jpeg larger than 850)', () => {
-            dataJson.value = jpegImage;
+        it('should fail the file_size test (jpeg larger than 850 and it is in the array)', () => {
+            dataJson.array = [jpegImage, pngImage, svgImage];
             const data = new MockData(dataJson);
             expect(() => {
                 TemplateBase.validationsArrayExtensionCheck(data);
-            }).to.throw(Error, 'The supplied file is larger than 850 bytes');
+            }).to.throw(Error, 'Invalid files in the array! The files can\'t be larger than 850 bytes');
         });
 
-        it('should pass the file_size test (png smaller than 850 bytes)', () => {
-            dataJson.value = pngImage;
-            const data = new MockData(dataJson);
-            expect(() => {
-                TemplateBase.validationsArrayExtensionCheck(data);
-            }).to.not.throw();
-        });
-
-        it('should pass the file_type test (svg smaller than 850 bytes)', () => {
-            dataJson.value = svgImage;
+        it('should pass the file_size test (jpeg is not in the array, svg and png < 850 bytes)', () => {
+            dataJson.array = [pngImage, svgImage];
             const data = new MockData(dataJson);
             expect(() => {
                 TemplateBase.validationsArrayExtensionCheck(data);

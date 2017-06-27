@@ -140,7 +140,7 @@ export abstract class TemplateBase implements Template {
                             for (const item of data.array) {
                                 const fileType = (<string>item).split(';')[0].split(':')[1];
                                 const isValidFileType = validation.arguments.filter(
-                                        argument => (<string>argument.value).includes(fileType)).length === 0;
+                                        argument => fileType.includes(<string>argument.value)).length === 0;
                                 if (isValidFileType) {
                                     wasError = true;
                                     break;
