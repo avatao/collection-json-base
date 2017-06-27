@@ -7,6 +7,11 @@ import {TemplateBase} from '../../models/template';
 class MockData extends DataBase {}
 
 describe('Validations Array extension check with values', () => {
+
+    const dataJson: DataJSON = {
+        name: 'Test',
+    };
+
     describe('Presence', () => {
 
         const validations: ValidationJSON[] = [
@@ -17,22 +22,17 @@ describe('Validations Array extension check with values', () => {
             }
         ];
 
-        const dataJson: DataJSON = {
-            name: 'Test',
-            value: undefined,
-            validations: validations
-        };
+        const data = new MockData(dataJson);
+        data.validations = validations;
 
         it('should fail the presence test', () => {
-            const data = new MockData(dataJson);
             expect(() => {
                 TemplateBase.validationsArrayExtensionCheck(data);
             }).to.throw(Error, 'Test is undefined, it is required!');
         });
 
         it('should pass the presence test', () => {
-            dataJson.value = 'something';
-            const data = new MockData(dataJson);
+            data.value = 'something';
             expect(() => {
                 TemplateBase.validationsArrayExtensionCheck(data);
             }).to.not.throw();
@@ -58,31 +58,26 @@ describe('Validations Array extension check with values', () => {
                 message: 'The value must be either hello or world!'
             }
         ];
-        const dataJson: DataJSON = {
-            name: 'Test',
-            value: 'nothello',
-            validations: validations
-        };
+
+        const data = new MockData(dataJson);
+        data.validations = validations;
 
         it('should fail the inclusion test', () => {
-            dataJson.value = 'nothello';
-            const data = new MockData(dataJson);
+            data.value = 'nothello';
             expect(() => {
                 TemplateBase.validationsArrayExtensionCheck(data);
             }).to.throw(Error, 'The value must be either hello or world!');
         });
 
         it('should pass the inclusion test (first word)', () => {
-            dataJson.value = 'hello';
-            const data = new MockData(dataJson);
+            data.value = 'hello';
             expect(() => {
                 TemplateBase.validationsArrayExtensionCheck(data);
             }).to.not.throw();
         });
 
         it('should pass the inclusion test (second word)', () => {
-            dataJson.value = 'world';
-            const data = new MockData(dataJson);
+            data.value = 'world';
             expect(() => {
                 TemplateBase.validationsArrayExtensionCheck(data);
             }).to.not.throw();
@@ -108,37 +103,31 @@ describe('Validations Array extension check with values', () => {
                 message: 'The value must not be hello or world!'
             }
         ];
-        const dataJson: DataJSON = {
-            name: 'Test',
-            value: 'hello',
-            validations: validations
-        };
+
+        const data = new MockData(dataJson);
+        data.validations = validations;
 
         it('should fail the exclusion test (first word)', () => {
-            dataJson.value = 'hello';
-            const data = new MockData(dataJson);
+            data.value = 'hello';
             expect(() => {
                 TemplateBase.validationsArrayExtensionCheck(data);
             }).to.throw(Error, 'The value must not be hello or world!');
         });
 
         it('should fail the exclusion test (second word)', () => {
-            dataJson.value = 'world';
-            const data = new MockData(dataJson);
+            data.value = 'world';
             expect(() => {
                 TemplateBase.validationsArrayExtensionCheck(data);
             }).to.throw(Error, 'The value must not be hello or world!');
         });
 
         it('should pass the exclusion test', () => {
-            dataJson.value = 'nothello';
-            const data = new MockData(dataJson);
+            data.value = 'nothello';
             expect(() => {
                 TemplateBase.validationsArrayExtensionCheck(data);
             }).to.not.throw();
         });
     });
-
 
     describe('Format', () => {
         const validations: ValidationJSON[] = [
@@ -155,23 +144,19 @@ describe('Validations Array extension check with values', () => {
                 message: 'The supplied value is not a valid email address!'
             }
         ];
-        const dataJson: DataJSON = {
-            name: 'Test',
-            value: 'bad.example.com',
-            validations: validations
-        };
+
+        const data = new MockData(dataJson);
+        data.validations = validations;
 
         it('should fail the format test (invalid email)', () => {
-            dataJson.value = 'bad.example.com';
-            const data = new MockData(dataJson);
+            data.value = 'bad.example.com';
             expect(() => {
                 TemplateBase.validationsArrayExtensionCheck(data);
             }).to.throw(Error, 'The supplied value is not a valid email address!');
         });
 
         it('should pass the format test (valid email)', () => {
-            dataJson.value = 'good@example.com';
-            const data = new MockData(dataJson);
+            data.value = 'good@example.com';
             expect(() => {
                 TemplateBase.validationsArrayExtensionCheck(data);
             }).to.not.throw();
@@ -226,31 +211,25 @@ describe('Validations Array extension check with values', () => {
             }
         ];
 
-        const dataJson: DataJSON = {
-            name: 'Test',
-            value: pngImage,
-            validations: validations
-        };
+        const data = new MockData(dataJson);
+        data.validations = validations;
 
         it('should fail the file_type test (svg)', () => {
-            dataJson.value = svgImage;
-            const data = new MockData(dataJson);
+            data.value = svgImage;
             expect(() => {
                 TemplateBase.validationsArrayExtensionCheck(data);
             }).to.throw(Error, 'The supplied file is invalid (must be a png or a jpg/jpeg)');
         });
 
         it('should pass the file_type test (png)', () => {
-            dataJson.value = pngImage;
-            const data = new MockData(dataJson);
+            data.value = pngImage;
             expect(() => {
                 TemplateBase.validationsArrayExtensionCheck(data);
             }).to.not.throw();
         });
 
         it('should pass the file_type test (jpeg)', () => {
-            dataJson.value = jpegImage;
-            const data = new MockData(dataJson);
+            data.value = jpegImage;
             expect(() => {
                 TemplateBase.validationsArrayExtensionCheck(data);
             }).to.not.throw();
@@ -276,31 +255,25 @@ describe('Validations Array extension check with values', () => {
             }
         ];
 
-        const dataJson: DataJSON = {
-            name: 'Test',
-            value: pngImage,
-            validations: validations
-        };
+        const data = new MockData(dataJson);
+        data.validations = validations;
 
         it('should fail the file_size test (jpeg larger than 850)', () => {
-            dataJson.value = jpegImage;
-            const data = new MockData(dataJson);
+            data.value = jpegImage;
             expect(() => {
                 TemplateBase.validationsArrayExtensionCheck(data);
             }).to.throw(Error, 'The supplied file is larger than 850 bytes');
         });
 
         it('should pass the file_size test (png smaller than 850 bytes)', () => {
-            dataJson.value = pngImage;
-            const data = new MockData(dataJson);
+            data.value = pngImage;
             expect(() => {
                 TemplateBase.validationsArrayExtensionCheck(data);
             }).to.not.throw();
         });
 
         it('should pass the file_type test (svg smaller than 850 bytes)', () => {
-            dataJson.value = svgImage;
-            const data = new MockData(dataJson);
+            data.value = svgImage;
             expect(() => {
                 TemplateBase.validationsArrayExtensionCheck(data);
             }).to.not.throw();
