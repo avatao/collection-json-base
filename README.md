@@ -1,6 +1,8 @@
 Collection+JSON TypeScript Client Library
 =========================================
 
+[![Build Status](https://travis-ci.org/avatao/collection-json-base.svg?branch=master)](https://travis-ci.org/avatao/collection-json-base)
+
 Disclaimer
 ---
 This project is in alpha state, changes are likely use it with care.
