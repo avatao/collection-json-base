@@ -10,8 +10,6 @@ export abstract class TemplateBase implements Template {
 
     static templateValidationExtensionCheck(data: Data): void {
 
-        console.log(data);
-
         if (typeof data.required !== 'undefined' && data.required === true) {
             if (typeof data.value === 'undefined' && typeof data.array === 'undefined') {
                 throw new Error(`The data with the name: '${data.name}' is required, but the value or array was not supplied.`)
