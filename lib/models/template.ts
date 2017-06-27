@@ -134,8 +134,7 @@ export abstract class TemplateBase implements Template {
                         // Expecting value to be Data URI with mime types
                         if (typeof data.value !== 'undefined') {
                             const fileType = (<string>data.value).split(';')[0].split(':')[1];
-                            wasError = validation.arguments.filter(
-                                    argument => (<string>argument.value).includes(fileType)).length === 0;
+                            wasError = validation.arguments.filter(argument => fileType.includes(<string>argument.value)).length === 0;
                         } else if (typeof data.array !== 'undefined') {
                             // If any files in the array has an incorrect type, error occurred
                             for (const item of data.array) {
