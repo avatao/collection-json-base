@@ -6,7 +6,7 @@ import {TemplateBase} from '../../models/template';
 
 class MockData extends DataBase {}
 
-describe('Template validation check with values', () => {
+describe('Validations array check with values', () => {
     describe('Validations Array extension', () => {
         describe('Presence', () => {
 
