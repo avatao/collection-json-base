@@ -9,15 +9,29 @@ export abstract class TemplateBase implements Template {
     public dataStore: DataStore;
 
     static templateValidationExtensionCheck(data: Data): void {
-        if (typeof data.value !== 'undefined') {
-            if (typeof data.regexp !== 'undefined') {
+
+        console.log(data);
+
+        if (typeof data.required !== 'undefined' && data.required === true) {
+            if (typeof data.value === 'undefined' && typeof data.array === 'undefined') {
+                throw new Error(`The data with the name: '${data.name}' is required, but the value or array was not supplied.`)
+            }
+        }
+
+        if (typeof data.regexp !== 'undefined') {
+            if (typeof data.value !== 'undefined') {
                 if (!RegExp(String(data.regexp)).test(String(data.value))) {
                     throw new Error(`The data with the name: '${data.name}' has the value: '${data.value}'.` +
-                    `\nThis doesn't match the supplied regexp: '${data.regexp}'`)
+                        `\nThis doesn't match the supplied regexp: '${data.regexp}'`)
+                }
+            } else if (typeof data.array !== 'undefined') {
+                for (const item of data.array) {
+                    if (!RegExp(String(data.regexp)).test(String(item))) {
+                        throw new Error(`The data with the name: '${data.name}' has the array with values: '${data.array}'.` +
+                            `\nThe value: '${item}' doesn't match the supplied regexp: '${data.regexp}'`)
+                    }
                 }
             }
-        } else if (data.required === true) {
-            throw new Error(`The data with the name: ${data.name} is missing its value but it is required.`)
         }
     }
 
