@@ -5,7 +5,8 @@ Collection+JSON TypeScript Client Library
 
 Disclaimer
 ---
-This project is in alpha state, changes are likely use it with care.
+This project is in beta state, tests are written and the api stabilizing, but
+changes and bugs are likely.
 
 Description
 ---
