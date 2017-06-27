@@ -279,4 +279,78 @@ describe('Validations Array extension check with values', () => {
             }).to.not.throw();
         });
     });
+
+
+    describe('Multiple validations', () => {
+
+        const validations: ValidationJSON[] = [
+            {
+                name: 'presence',
+                prompt: 'Test must exist',
+                message: 'Test is undefined, it is required!'
+            },
+            {
+                name: 'inclusion',
+                prompt: 'Value must be either test@example.com, test@example.hu or notvalid.email.com',
+                arguments: [
+                    {
+                        name: 'option',
+                        value: 'test@example.com'
+                    },
+                    {
+                        name: 'option',
+                        value: 'test@example.hu'
+                    },
+                    {
+                        name: 'option',
+                        value: 'notvalid.email.com'
+                    }
+                ],
+                message: 'Only test@example.com, test@example.hu or notvalid.email.com is accepted!'
+            },
+            {
+                name: 'format',
+                prompt: 'The value must be a valid email address',
+                arguments: [
+                    {
+                        name: 'regex',
+                        value: '^[a-zA-Z0-9.!#$%&\'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?' +
+                        '(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$'
+                    }
+                ],
+                message: 'The value must be a valid email!'
+            }
+        ];
+
+        const data = new MockData(dataJson);
+        data.validations = validations;
+
+        it('should fail the multiple validation test (value not supplied)', () => {
+            data.value = undefined;
+            expect(() => {
+                TemplateBase.validationsArrayExtensionCheck(data);
+            }).to.throw('Test is undefined, it is required!');
+        });
+
+        it('should fail the multiple validation test (not in the whitelist)', () => {
+            data.value = 'test@example.at';
+            expect(() => {
+                TemplateBase.validationsArrayExtensionCheck(data);
+            }).to.throw('Only test@example.com, test@example.hu or notvalid.email.com is accepted!');
+        });
+
+        it('should fail the multiple validation test (not a valid email)', () => {
+            data.value = 'notvalid.email.com';
+            expect(() => {
+                TemplateBase.validationsArrayExtensionCheck(data);
+            }).to.throw('The value must be a valid email!');
+        });
+
+        it('should pass the multiple validation test', () => {
+            data.value = 'test@example.com';
+            expect(() => {
+                TemplateBase.validationsArrayExtensionCheck(data);
+            }).to.not.throw();
+        });
+    });
 });

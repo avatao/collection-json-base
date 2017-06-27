@@ -277,7 +277,7 @@ describe('Validations Array extension check with arrays', () => {
             },
             {
                 name: 'inclusion',
-                prompt: 'Array values must be either test@example.com or test@example.hu',
+                prompt: 'Array values must be either test@example.com, test@example.hu or notvalid.email.com',
                 arguments: [
                     {
                         name: 'option',
