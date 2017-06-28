@@ -1,3 +1,8 @@
+1.0.0-beta.4 / 2017-06-29
+==================
+
+* CollectionBase items method returns ItemStore object
+
 1.0.0-beta.3 / 2017-06-29
 ==================
 

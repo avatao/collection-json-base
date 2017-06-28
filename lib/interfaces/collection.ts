@@ -18,6 +18,7 @@ export interface CollectionData {
 export interface CollectionAPI {
     link(rel: string): Link;
     query(rel: string): Query;
+    items(): ItemStore;
     json(): {collection: CollectionJSON}
 }
 
