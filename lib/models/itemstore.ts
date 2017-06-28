@@ -5,8 +5,8 @@ import {ItemStoreAPI} from '../interfaces/itemstore';
 export class ItemStore implements ItemStoreAPI {
     private _items: Item[];
 
-    constructor(items: Item[]) {
-        this._items = items;
+    constructor() {
+        this._items = []
     }
 
     public add(item: Item): void {
