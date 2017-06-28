@@ -3,14 +3,14 @@ import {ItemJSON} from '../interfaces/json';
 import {ItemStoreAPI} from '../interfaces/itemstore';
 
 export class ItemStore implements ItemStoreAPI {
-    private _items: Item[];
+    private items: Item[];
 
     constructor() {
-        this._items = [];
+        this.items = [];
     }
 
     public add(item: Item): void {
-        this._items.push(item);
+        this.items.push(item);
     }
 
     /**
@@ -18,7 +18,7 @@ export class ItemStore implements ItemStoreAPI {
      * @returns {Item[]} the items array
      */
     public all(): Item[] {
-        return this._items;
+        return this.items;
     }
 
     /**
@@ -27,7 +27,7 @@ export class ItemStore implements ItemStoreAPI {
      * @returns {Item} the first item in the array
      */
     public first(): Item {
-        return this._items[0];
+        return this.items[0];
     }
 
     /**
@@ -36,7 +36,7 @@ export class ItemStore implements ItemStoreAPI {
      * @returns {Item} the first and only item in the array
      */
     public one(): Item {
-        if (this._items.length === 1) {
+        if (this.items.length === 1) {
             return this.first();
         } else {
             throw new Error(`The item array contains more than one values, use first() if you are sure you need the first one only!`)
@@ -54,7 +54,7 @@ export class ItemStore implements ItemStoreAPI {
     }
 
     [Symbol.iterator]() {
-        return this._items[Symbol.iterator]();
+        return this.items[Symbol.iterator]();
     }
 
 }
