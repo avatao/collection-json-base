@@ -5,6 +5,6 @@ export interface ItemStoreAPI {
     add(item: Item): void;
     first(): Item;
     one(): Item;
-    items(): Item[];
+    all(): Item[];
     json(): ItemJSON[];
 }

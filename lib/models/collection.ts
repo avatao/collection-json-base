@@ -3,7 +3,6 @@ import {
     CollectionError,
     CollectionJSON,
     ErrorJSON,
-    Item,
     ItemJSON,
     Link,
     LinkJSON,
@@ -80,9 +79,9 @@ export abstract class CollectionBase implements Collection {
         }
     }
 
-    public items(): Item[] {
+    public items(): ItemStore {
         if (typeof this.itemStore !== 'undefined') {
-            return this.itemStore.items();
+            return this.itemStore;
         } else {
             throw new Error('There are no items stored in this Collection!');
         }

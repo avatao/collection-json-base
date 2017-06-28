@@ -17,7 +17,7 @@ export class ItemStore implements ItemStoreAPI {
      * Returns the items array
      * @returns {Item[]} the items array
      */
-    public items(): Item[] {
+    public all(): Item[] {
         return this._items;
     }
 
