@@ -6,3 +6,4 @@ export * from './json';
 export * from './link';
 export * from './query';
 export * from './template';
+export * from './itemstore';
