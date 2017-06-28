@@ -6,7 +6,7 @@ export class ItemStore implements ItemStoreAPI {
     private _items: Item[];
 
     constructor() {
-        this._items = []
+        this._items = [];
     }
 
     public add(item: Item): void {
@@ -36,7 +36,7 @@ export class ItemStore implements ItemStoreAPI {
      * @returns {Item} the first and only item in the array
      */
     public one(): Item {
-        if (this._items.length === 0) {
+        if (this._items.length === 1) {
             return this.first();
         } else {
             throw new Error(`The item array contains more than one values, use first() if you are sure you need the first one only!`)
@@ -46,7 +46,7 @@ export class ItemStore implements ItemStoreAPI {
     public json(): ItemJSON[] {
         const result = [];
 
-        for (const item of this._items) {
+        for (const item of this) {
             result.push(item.json())
         }
 
@@ -54,7 +54,7 @@ export class ItemStore implements ItemStoreAPI {
     }
 
     [Symbol.iterator]() {
-        return this._items.values();
+        return this._items[Symbol.iterator]();
     }
 
 }
