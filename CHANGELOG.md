@@ -1,3 +1,9 @@
+1.0.0-beta.2 / 2017-06-28
+==================
+
+* Refactored variable names (store variables)
+* Created ItemStore with API (first, one method)
+
 1.0.0-beta.1 / 2017-06-27
 ==================
 

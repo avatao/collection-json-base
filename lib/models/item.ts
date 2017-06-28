@@ -7,7 +7,7 @@ import {Data} from '../interfaces/data';
 export abstract class ItemBase implements Item {
 
     public href: string;
-    public links?: LinkStore;
+    public linkStore?: LinkStore;
     public dataStore?: DataStore;
 
     constructor(item: ItemJSON) {
@@ -22,32 +22,12 @@ export abstract class ItemBase implements Item {
         }
     }
 
-    protected abstract parseLinks(links: LinkJSON[]): void;
-    protected abstract parseData(data: DataJSON[]): void;
-
     public link(rel: string): Link {
-        if (typeof this.links !== 'undefined') {
-            return this.links.link(rel);
+        if (typeof this.linkStore !== 'undefined') {
+            return this.linkStore.link(rel);
         } else {
             throw new Error('There are no links stored in this Item!');
         }
-    }
-
-    public json(): ItemJSON {
-
-        const result: ItemJSON = {
-            href: this.href
-        };
-
-        if (this.links) {
-            result.links = this.links.json()
-        }
-
-        if (this.dataStore) {
-            result.data = this.dataStore.json()
-        }
-
-        return result;
     }
 
     public data(name: string): Data {
@@ -57,4 +37,25 @@ export abstract class ItemBase implements Item {
             throw new Error(`This item with the href: ${this.href} has no data array!`)
         }
     }
+
+
+    public json(): ItemJSON {
+
+        const result: ItemJSON = {
+            href: this.href
+        };
+
+        if (this.linkStore) {
+            result.links = this.linkStore.json()
+        }
+
+        if (this.dataStore) {
+            result.data = this.dataStore.json()
+        }
+
+        return result;
+    }
+
+    protected abstract parseLinks(links: LinkJSON[]): void;
+    protected abstract parseData(data: DataJSON[]): void;
 }

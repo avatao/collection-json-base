@@ -11,7 +11,7 @@ export interface ItemAPI {
 
 export interface ItemData {
     href: string;
-    links?: LinkStore;
+    linkStore?: LinkStore;
     dataStore?: DataStore;
 }
 

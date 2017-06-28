@@ -8,3 +8,4 @@ export * from './query';
 export * from './querystore';
 export * from './template';
 export * from './configuration';
+export * from './itemstore';
