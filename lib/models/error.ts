@@ -6,15 +6,15 @@ export class ErrorBase implements CollectionError {
     public message?: string;
 
     constructor(error: ErrorJSON) {
-        if (error.title) {
+        if (typeof error.title !== 'undefined') {
             this.title = error.title;
         }
 
-        if (error.code) {
+        if (typeof error.code !== 'undefined') {
             this.code = error.code;
         }
 
-        if (error.message) {
+        if (typeof error.message !== 'undefined') {
             this.message = error.message;
         }
     }

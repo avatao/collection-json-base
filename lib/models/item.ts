@@ -13,11 +13,11 @@ export abstract class ItemBase implements Item {
     constructor(item: ItemJSON) {
         this.href = item.href;
 
-        if (item.links) {
+        if (typeof item.links !== 'undefined') {
             this.parseLinks(item.links);
         }
 
-        if (item.data) {
+        if (typeof item.data !== 'undefined') {
             this.parseData(item.data)
         }
     }

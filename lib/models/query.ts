@@ -14,15 +14,15 @@ export abstract class QueryBase implements Query {
         this.href = query.href;
         this.rel = query.rel;
 
-        if (query.name) {
+        if (typeof query.name !== 'undefined') {
             this.name = query.name;
         }
 
-        if (query.prompt) {
+        if (typeof query.prompt !== 'undefined') {
             this.prompt = query.prompt
         }
 
-        if (query.data) {
+        if (typeof query.data !== 'undefined') {
             this.parseData(query.data);
         }
     }
