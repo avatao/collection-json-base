@@ -1,14 +1,19 @@
-1.0.0-beta.5 / 2017-06-29
+1.0.0-beta.6 / 2017-06-29
+==================
+
+* Checking for undefined, because false boolean can be a valid value as well
+
+1.0.0-beta.5 / 2017-06-28
 ==================
 
 * Fixed ItemStore iterator
 
-1.0.0-beta.4 / 2017-06-29
+1.0.0-beta.4 / 2017-06-28
 ==================
 
 * CollectionBase items method returns ItemStore object
 
-1.0.0-beta.3 / 2017-06-29
+1.0.0-beta.3 / 2017-06-28
 ==================
 
 * Fixed ItemStore constructor
