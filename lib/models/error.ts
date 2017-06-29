@@ -22,15 +22,15 @@ export class ErrorBase implements CollectionError {
     public json(): ErrorJSON {
         const result: ErrorJSON = {};
 
-        if (this.title) {
+        if (typeof this.title !== 'undefined') {
             result.title = this.title;
         }
 
-        if (this.code) {
+        if (typeof this.code !== 'undefined') {
             result.code = this.code;
         }
 
-        if (this.message) {
+        if (typeof this.message !== 'undefined') {
             result.message = this.message;
         }
 

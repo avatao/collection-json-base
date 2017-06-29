@@ -45,11 +45,11 @@ export abstract class ItemBase implements Item {
             href: this.href
         };
 
-        if (this.linkStore) {
+        if (typeof this.linkStore !== 'undefined') {
             result.links = this.linkStore.json()
         }
 
-        if (this.dataStore) {
+        if (typeof this.dataStore !== 'undefined') {
             result.data = this.dataStore.json()
         }
 

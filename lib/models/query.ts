@@ -33,15 +33,15 @@ export abstract class QueryBase implements Query {
     public json(): QueryJSON {
         const result: QueryJSON = {href: this.href, rel: this.rel};
 
-        if (this.name) {
+        if (typeof this.name !== 'undefined') {
             result.name = this.name;
         }
 
-        if (this.prompt) {
+        if (typeof this.prompt !== 'undefined') {
             result.prompt = this.prompt
         }
 
-        if (this.dataStore) {
+        if (typeof this.dataStore !== 'undefined') {
             result.data = this.dataStore.json();
         }
 

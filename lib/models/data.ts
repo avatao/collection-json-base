@@ -14,31 +14,31 @@ export class DataBase implements Data {
     constructor(data: DataJSON) {
         this.name = data.name;
 
-        if (data.value) {
+        if (typeof data.value !== 'undefined') {
             this.value = data.value;
         }
 
-        if (data.array) {
+        if (typeof data.array !== 'undefined') {
             this.array = data.array;
         }
 
-        if (data.object) {
+        if (typeof data.object !== 'undefined') {
             this.object = data.object;
         }
 
-        if (data.prompt) {
+        if (typeof data.prompt !== 'undefined') {
             this.prompt = data.prompt;
         }
 
-        if (data.regexp) {
+        if (typeof data.regexp !== 'undefined') {
             this.regexp = data.regexp;
         }
 
-        if (data.required) {
+        if (typeof data.required !== 'undefined') {
             this.required = data.required;
         }
 
-        if (data.validations) {
+        if (typeof data.validations !== 'undefined') {
             this.validations = data.validations;
         }
     }
@@ -46,31 +46,31 @@ export class DataBase implements Data {
     public json(): DataJSON {
         const result: DataJSON = {name: this.name};
 
-        if (this.value) {
+        if (typeof this.value !== 'undefined') {
             result.value = this.value;
         }
 
-        if (this.array) {
+        if (typeof this.array !== 'undefined') {
             result.array = this.array;
         }
 
-        if (this.object) {
+        if (typeof this.object !== 'undefined') {
             result.object = this.object;
         }
 
-        if (this.prompt) {
+        if (typeof this.prompt !== 'undefined') {
             result.prompt = this.prompt;
         }
 
-        if (this.regexp) {
+        if (typeof this.regexp !== 'undefined') {
             result.regexp = this.regexp;
         }
 
-        if (this.required) {
+        if (typeof this.required !== 'undefined') {
             result.required = this.required;
         }
 
-        if (this.validations) {
+        if (typeof this.validations !== 'undefined') {
             result.validations = this.validations;
         }
 

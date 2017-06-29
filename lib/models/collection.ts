@@ -40,19 +40,19 @@ export abstract class CollectionBase implements Collection {
     }
 
     private parseOptionalProperties(collection: CollectionJSON) {
-        if (collection.links) {
+        if (typeof collection.links !== 'undefined') {
             this.parseLinks(collection.links);
         }
-        if (collection.items) {
+        if (typeof collection.items !== 'undefined') {
             this.parseItems(collection.items);
         }
-        if (collection.queries) {
+        if (typeof collection.queries !== 'undefined') {
             this.parseQueries(collection.queries);
         }
-        if (collection.template) {
+        if (typeof collection.template !== 'undefined') {
             this.parseTemplate(collection.template);
         }
-        if (collection.error) {
+        if (typeof collection.error !== 'undefined') {
             this.parseError(collection.error);
         }
     }
@@ -91,26 +91,26 @@ export abstract class CollectionBase implements Collection {
 
         const result: {collection: CollectionJSON} = {collection: {version: this.version, href: this.href}};
 
-        if (this.linkStore) {
+        if (typeof this.linkStore !== 'undefined') {
             result.collection.links = this.linkStore.json();
         }
 
-        if (this.itemStore) {
+        if (typeof this.itemStore !== 'undefined') {
             result.collection.items = [];
             for (const item of this.itemStore) {
                 result.collection.items.push(item.json())
             }
         }
 
-        if (this.queryStore) {
+        if (typeof this.queryStore !== 'undefined') {
             result.collection.queries = this.queryStore.json();
         }
 
-        if (this.template) {
+        if (typeof this.template !== 'undefined') {
             result.collection.template = this.template.json();
         }
 
-        if (this.error) {
+        if (typeof this.error !== 'undefined') {
             result.collection.error = this.error.json();
         }
 

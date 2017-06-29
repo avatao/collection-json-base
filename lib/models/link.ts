@@ -34,15 +34,15 @@ export abstract class LinkBase implements Link {
             rel: this.rel
         };
 
-        if (this.name) {
+        if (typeof this.name !== 'undefined') {
             result.name = this.name;
         }
 
-        if (this.prompt) {
+        if (typeof this.prompt !== 'undefined') {
             result.prompt = this.prompt;
         }
 
-        if (this.render) {
+        if (typeof this.render !== 'undefined') {
             result.render = this.render;
         }
 
