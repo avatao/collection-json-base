@@ -1,3 +1,8 @@
+1.0.0-beta.9 / 2017-07-03
+==================
+
+* Fixed Item interface (added dataValue method)
+
 1.0.0-beta.8 / 2017-07-03
 ==================
 
