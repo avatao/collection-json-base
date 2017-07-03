@@ -1,18 +1,18 @@
-import {Link} from '../interfaces';
 import {LinkJSON} from '../interfaces/json';
 import {LinkStoreAPI} from '../interfaces/linkstore';
+import {LinkBase} from './link';
 
 export class LinkStore implements LinkStoreAPI {
-    private links: Map<string, Link>;
+    private links: Map<string, LinkBase>;
     constructor() {
         this.links = new Map();
     }
 
-    public add(link: Link) {
+    public add(link: LinkBase) {
         this.links.set(link.rel, link);
     }
 
-    public link(rel: string): Link {
+    public link(rel: string): LinkBase {
         const link = this.links.get(rel);
         if (typeof link !== 'undefined') {
             return link;

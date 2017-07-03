@@ -1,19 +1,19 @@
-import {Data} from '../interfaces';
 import {DataStoreAPI} from '../interfaces/datastore';
 import {DataJSON} from '../interfaces/json';
+import {DataBase} from './data';
 
 export class DataStore implements DataStoreAPI {
-    private dataStore: Map<string, Data>;
+    private dataStore: Map<string, DataBase>;
 
     constructor() {
         this.dataStore = new Map();
     }
 
-    public add(data: Data) {
+    public add(data: DataBase) {
         this.dataStore.set(data.name, data);
     }
 
-    public data(name: string): Data {
+    public data(name: string): DataBase {
         const data = this.dataStore.get(name);
         if (typeof data !== 'undefined') {
             return data;

@@ -1,8 +1,9 @@
-import {Item, ItemJSON, Link, LinkJSON} from '../interfaces';
+import {Item, ItemJSON, LinkJSON} from '../interfaces';
 import {DataStore} from './datastore';
 import {LinkStore} from './linkstore';
 import {DataJSON} from '../interfaces/json';
-import {Data} from '../interfaces/data';
+import {LinkBase} from './link';
+import {DataBase} from './data';
 
 export abstract class ItemBase implements Item {
 
@@ -22,7 +23,7 @@ export abstract class ItemBase implements Item {
         }
     }
 
-    public link(rel: string): Link {
+    public link(rel: string): LinkBase {
         if (typeof this.linkStore !== 'undefined') {
             return this.linkStore.link(rel);
         } else {
@@ -30,7 +31,7 @@ export abstract class ItemBase implements Item {
         }
     }
 
-    public data(name: string): Data {
+    public data(name: string): DataBase {
         if (typeof this.dataStore !== 'undefined') {
             return this.dataStore.data(name);
         } else {

@@ -1,7 +1,8 @@
 import {Observable} from 'rxjs/Observable';
-import {Collection, Query, QueryJSON} from '../interfaces';
+import {Query, QueryJSON} from '../interfaces';
 import {DataStore} from './datastore';
 import {DataJSON} from '../interfaces/json';
+import {CollectionBase} from './collection';
 
 export abstract class QueryBase implements Query {
     public href: string;
@@ -28,7 +29,7 @@ export abstract class QueryBase implements Query {
     }
 
     protected abstract parseData(data: DataJSON[]): void;
-    public abstract send(params: { name: string, value: string | number | boolean }[]): Observable<Collection>;
+    public abstract send(params: { name: string, value: string | number | boolean }[]): Observable<CollectionBase>;
 
     public json(): QueryJSON {
         const result: QueryJSON = {href: this.href, rel: this.rel};

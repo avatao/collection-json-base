@@ -1,20 +1,20 @@
 import {
     Collection,
-    CollectionError,
     CollectionJSON,
     ErrorJSON,
     ItemJSON,
-    Link,
     LinkJSON,
-    Query,
     QueryJSON,
-    Template,
     TemplateJSON
 } from '../interfaces';
 import {LinkStore} from './linkstore';
 import {QueryStore} from './querystore';
 import {ItemStore} from './itemstore';
 import {isUri} from 'valid-url';
+import {LinkBase} from './link';
+import {QueryBase} from './query';
+import {ErrorBase} from './error';
+import {TemplateBase} from './template';
 
 export abstract class CollectionBase implements Collection {
     public version: string;
@@ -22,8 +22,8 @@ export abstract class CollectionBase implements Collection {
     public linkStore?: LinkStore;
     public itemStore?: ItemStore;
     public queryStore?: QueryStore;
-    public template?: Template;
-    public error?: CollectionError;
+    public template?: TemplateBase;
+    public error?: ErrorBase;
 
     constructor(collection: CollectionJSON) {
         this.version = collection.version || '1.0';
@@ -63,7 +63,7 @@ export abstract class CollectionBase implements Collection {
     protected abstract parseTemplate(template: TemplateJSON): void;
     protected abstract parseError(error: ErrorJSON): void;
 
-    public link(rel: string): Link {
+    public link(rel: string): LinkBase {
         if (typeof this.linkStore !== 'undefined') {
             return this.linkStore.link(rel);
         } else {
@@ -71,7 +71,7 @@ export abstract class CollectionBase implements Collection {
         }
     }
 
-    public query(rel: string): Query {
+    public query(rel: string): QueryBase {
         if (typeof this.queryStore !== 'undefined') {
             return this.queryStore.query(rel);
         } else {

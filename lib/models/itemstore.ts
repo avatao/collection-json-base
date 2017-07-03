@@ -1,41 +1,41 @@
-import {Item} from '../interfaces/item';
 import {ItemJSON} from '../interfaces/json';
 import {ItemStoreAPI} from '../interfaces/itemstore';
+import {ItemBase} from './item';
 
 export class ItemStore implements ItemStoreAPI {
-    private items: Item[];
+    private items: ItemBase[];
 
     constructor() {
         this.items = [];
     }
 
-    public add(item: Item): void {
+    public add(item: ItemBase): void {
         this.items.push(item);
     }
 
     /**
      * Returns the items array
-     * @returns {Item[]} the items array
+     * @returns {ItemBase[]} the items array
      */
-    public all(): Item[] {
+    public all(): ItemBase[] {
         return this.items;
     }
 
     /**
      * This method will return the first item of the items array
      * regardless of the number of items in the array
-     * @returns {Item} the first item in the array
+     * @returns {ItemBase} the first item in the array
      */
-    public first(): Item {
+    public first(): ItemBase {
         return this.items[0];
     }
 
     /**
      * This method will return the first item of the items array, if there is only one value
      * It will fail otherwise
-     * @returns {Item} the first and only item in the array
+     * @returns {ItemBase} the first and only item in the array
      */
-    public one(): Item {
+    public one(): ItemBase {
         if (this.items.length === 1) {
             return this.first();
         } else {

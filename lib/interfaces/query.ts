@@ -1,6 +1,5 @@
 import {Observable} from 'rxjs/Observable';
-import {DataStore} from '../models';
-import {Collection} from './collection';
+import {DataStore, CollectionBase} from '../models';
 import {QueryJSON} from './json';
 
 export interface QueryData {
@@ -12,7 +11,7 @@ export interface QueryData {
 }
 
 export interface QueryAPI {
-    send(params: { name: string, value: string | number | boolean }[]): Observable<Collection>;
+    send(params: { name: string, value: string | number | boolean }[]): Observable<CollectionBase>;
     json(): QueryJSON
 }
 

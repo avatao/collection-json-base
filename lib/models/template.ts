@@ -1,14 +1,15 @@
 import {Observable} from 'rxjs/Observable';
-import {Collection, Template, TemplateJSON} from '../interfaces';
+import {Template, TemplateJSON} from '../interfaces';
 import {DataStore} from './datastore';
 import {DataJSON} from '../interfaces/json';
-import {Data} from '../interfaces/data';
+import {CollectionBase} from './collection';
+import {DataBase} from './data';
 
 export abstract class TemplateBase implements Template {
 
     public dataStore: DataStore;
 
-    static templateValidationExtensionCheck(data: Data): void {
+    static templateValidationExtensionCheck(data: DataBase): void {
 
         if (typeof data.required !== 'undefined' && data.required === true) {
             if (typeof data.value === 'undefined' && typeof data.array === 'undefined') {
@@ -33,7 +34,7 @@ export abstract class TemplateBase implements Template {
         }
     }
 
-    static validationsArrayExtensionCheck(data: Data): void {
+    static validationsArrayExtensionCheck(data: DataBase): void {
         let wasError = false;
 
         if (typeof data.validations !== 'undefined') {
@@ -216,14 +217,14 @@ export abstract class TemplateBase implements Template {
     }
 
     protected abstract parseData(data: DataJSON[]): void;
-    public abstract submit(): Observable<Collection>;
-    public abstract update(): Observable<Collection>;
+    public abstract submit(): Observable<CollectionBase>;
+    public abstract update(): Observable<CollectionBase>;
 
     public json(): TemplateJSON {
         return { data: this.dataStore.json() }
     }
 
-    public data(name: string): Data {
+    public data(name: string): DataBase {
         if (typeof this.dataStore !== 'undefined') {
             return this.dataStore.data(name);
         } else {

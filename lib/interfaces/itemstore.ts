@@ -1,10 +1,10 @@
 import {ItemJSON} from './json';
-import {Item} from './item';
+import {ItemBase} from '../models/item';
 
 export interface ItemStoreAPI {
-    add(item: Item): void;
-    first(): Item;
-    one(): Item;
-    all(): Item[];
+    add(item: ItemBase): void;
+    first(): ItemBase;
+    one(): ItemBase;
+    all(): ItemBase[];
     json(): ItemJSON[];
 }

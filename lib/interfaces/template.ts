@@ -1,18 +1,18 @@
 import {Observable} from 'rxjs/Observable';
 import {DataStore} from '../models';
-import {Collection} from './collection';
 import {TemplateJSON} from './json';
-import {Data} from './data';
+import {CollectionBase} from '../models/collection';
+import {DataBase} from '../models/data';
 
 export interface TemplateData {
      dataStore: DataStore;
 }
 
 export interface TemplateAPI {
-    submit(): Observable<Collection>;
-    update(): Observable<Collection>;
+    submit(): Observable<CollectionBase>;
+    update(): Observable<CollectionBase>;
     json(): TemplateJSON;
-    data(name: string): Data;
+    data(name: string): DataBase;
     set(name: string, value: string | number | boolean ): void;
     setAll(body: {name: string, value: string | number | boolean}[]): void;
     validate(): void;

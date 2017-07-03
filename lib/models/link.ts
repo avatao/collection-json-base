@@ -1,5 +1,6 @@
 import {Observable} from 'rxjs/Observable';
-import {Collection, Link, LinkJSON} from '../interfaces';
+import {Link, LinkJSON} from '../interfaces';
+import {CollectionBase} from './collection';
 
 export abstract class LinkBase implements Link {
     public href: string;
@@ -8,7 +9,7 @@ export abstract class LinkBase implements Link {
     public prompt?: string;
     public render?: string;
 
-    public abstract follow(): Observable<Collection>;
+    public abstract follow(): Observable<CollectionBase>;
 
     constructor(link: LinkJSON) {
         this.href = link.href;

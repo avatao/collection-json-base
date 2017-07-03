@@ -1,9 +1,9 @@
 import {Observable} from 'rxjs/Observable';
-import {Collection} from './collection';
 import {LinkJSON} from './json';
+import {CollectionBase} from '../models/collection';
 
 export interface LinkAPI {
-    follow(): Observable<Collection>;
+    follow(): Observable<CollectionBase>;
     json(): LinkJSON
 }
 

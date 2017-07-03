@@ -1,11 +1,11 @@
 import {DataStore, LinkStore} from '../models';
-import {Link} from './link';
 import {ItemJSON} from './json';
-import {Data} from './data';
+import {LinkBase} from '../models/link';
+import {DataBase} from '../models/data';
 
 export interface ItemAPI {
-    link(rel: string): Link;
-    data(name: string): Data;
+    link(rel: string): LinkBase;
+    data(name: string): DataBase;
     dataValue(name: string): string | number | boolean | undefined ;
     json(): ItemJSON;
 }

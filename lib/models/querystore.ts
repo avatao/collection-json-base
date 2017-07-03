@@ -1,19 +1,19 @@
-import {Query} from '../interfaces';
 import {QueryStoreAPI} from '../interfaces/querystore';
 import {QueryJSON} from '../interfaces/json';
+import {QueryBase} from './query';
 
 export class QueryStore implements QueryStoreAPI {
-    private queries: Map<string, Query>;
+    private queries: Map<string, QueryBase>;
 
     constructor() {
         this.queries = new Map();
     }
 
-    public add(query: Query) {
+    public add(query: QueryBase) {
         this.queries.set(query.rel, query);
     }
 
-    public query(rel: string): Query {
+    public query(rel: string): QueryBase {
         const query = this.queries.get(rel);
         if (typeof query !== 'undefined') {
             return query;
