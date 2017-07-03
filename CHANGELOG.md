@@ -1,3 +1,9 @@
+1.0.0-beta.10 / 2017-07-03
+==================
+
+* Using base classes for return values, to make it compatible with
+the framework specific implementations.
+
 1.0.0-beta.9 / 2017-07-03
 ==================
 
