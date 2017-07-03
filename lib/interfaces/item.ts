@@ -6,6 +6,7 @@ import {Data} from './data';
 export interface ItemAPI {
     link(rel: string): Link;
     data(name: string): Data;
+    dataValue(name: string): string | number | boolean | undefined ;
     json(): ItemJSON;
 }
 
