@@ -38,6 +38,14 @@ export abstract class ItemBase implements Item {
         }
     }
 
+    public dataValue(name: string): string | number | boolean | undefined {
+        if (typeof this.dataStore !== 'undefined') {
+            return this.dataStore.data(name).value;
+        } else {
+            throw new Error(`This item with the href: ${this.href} has no data array!`)
+        }
+    }
+
 
     public json(): ItemJSON {
 
