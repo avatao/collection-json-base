@@ -1,3 +1,9 @@
+1.0.0-beta.8 / 2017-07-03
+==================
+
+* Added dataValue method to the ItemBase class to eliminate boilerplate
+in the client
+
 1.0.0-beta.7 / 2017-06-29
 ==================
 
