@@ -9,7 +9,7 @@ export abstract class LinkBase implements Link {
     public prompt?: string;
     public render?: string;
 
-    public abstract follow(): Observable<CollectionBase>;
+    public abstract follow(params?: Map<string, string>): Observable<CollectionBase>;
 
     constructor(link: LinkJSON) {
         this.href = link.href;

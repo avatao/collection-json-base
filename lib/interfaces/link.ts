@@ -3,7 +3,7 @@ import {LinkJSON} from './json';
 import {CollectionBase} from '../models/collection';
 
 export interface LinkAPI {
-    follow(): Observable<CollectionBase>;
+    follow(params?: Map<string, string>): Observable<CollectionBase>;
     json(): LinkJSON
 }
 
