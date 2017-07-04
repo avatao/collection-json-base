@@ -1,3 +1,9 @@
+1.0.0-beta.11 / 2017-07-04
+==================
+
+* Added optional params argument to the link's follow method, this way
+links can preserve custom query parameters
+
 1.0.0-beta.10 / 2017-07-03
 ==================
 
