@@ -1,3 +1,10 @@
+1.0.0-beta.12 / 2017-07-06
+==================
+
+* Not throwing errors when a data, item, query, link is missing, it will return
+undefined instead -> this way frameworks like Angular will require less boilerplate
+* Renamed dataValue method to getDataValue
+
 1.0.0-beta.11 / 2017-07-04
 ==================
 
