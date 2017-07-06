@@ -26,7 +26,7 @@ export class ItemStore implements ItemStoreAPI {
      * regardless of the number of items in the array
      * @returns {ItemBase} the first item in the array
      */
-    public first(): ItemBase {
+    public first(): ItemBase | undefined {
         return this.items[0];
     }
 
@@ -36,10 +36,12 @@ export class ItemStore implements ItemStoreAPI {
      * @returns {ItemBase} the first and only item in the array
      */
     public one(): ItemBase {
-        if (this.items.length === 1) {
-            return this.first();
-        } else {
+        if (this.items.length === 0) {
+            throw new Error('This item array is empty!')
+        } else if (this.items.length > 1) {
             throw new Error(`The item array contains more than one values, use first() if you are sure you need the first one only!`)
+        } else {
+            return this.items[0];
         }
     }
 

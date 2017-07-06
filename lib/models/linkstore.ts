@@ -12,13 +12,8 @@ export class LinkStore implements LinkStoreAPI {
         this.links.set(link.rel, link);
     }
 
-    public link(rel: string): LinkBase {
-        const link = this.links.get(rel);
-        if (typeof link !== 'undefined') {
-            return link;
-        } else {
-            throw new Error('Key not found');
-        }
+    public link(rel: string): LinkBase | undefined {
+        return this.links.get(rel);
     }
 
     public json(): LinkJSON[] {

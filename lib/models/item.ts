@@ -23,30 +23,29 @@ export abstract class ItemBase implements Item {
         }
     }
 
-    public link(rel: string): LinkBase {
+    public link(rel: string): LinkBase | undefined {
         if (typeof this.linkStore !== 'undefined') {
             return this.linkStore.link(rel);
-        } else {
-            throw new Error('There are no links stored in this Item!');
         }
     }
 
-    public data(name: string): DataBase {
+    public data(name: string): DataBase | undefined {
         if (typeof this.dataStore !== 'undefined') {
             return this.dataStore.data(name);
-        } else {
-            throw new Error(`This item with the href: ${this.href} has no data array!`)
         }
     }
 
-    public dataValue(name: string): string | number | boolean | undefined {
+    public getDataValue(name: string): string | number | boolean | undefined {
         if (typeof this.dataStore !== 'undefined') {
-            return this.dataStore.data(name).value;
-        } else {
-            throw new Error(`This item with the href: ${this.href} has no data array!`)
+            return this.dataStore.getDataValue(name);
         }
     }
 
+    public setDataValue(name: string, value: string | number | boolean | undefined): void {
+        if (typeof this.dataStore !== 'undefined') {
+            return this.dataStore.setDataValue(name, value);
+        }
+    }
 
     public json(): ItemJSON {
 

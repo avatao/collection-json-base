@@ -16,9 +16,9 @@ export interface CollectionData {
 }
 
 export interface CollectionAPI {
-    link(rel: string): LinkBase;
-    query(rel: string): QueryBase;
-    items(): ItemStore;
+    link(rel: string): LinkBase | undefined;
+    query(rel: string): QueryBase | undefined;
+    items(): ItemStore | undefined;
     json(): {collection: CollectionJSON}
 }
 

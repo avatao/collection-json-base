@@ -12,7 +12,7 @@ export interface TemplateAPI {
     submit(): Observable<CollectionBase>;
     update(): Observable<CollectionBase>;
     json(): TemplateJSON;
-    data(name: string): DataBase;
+    data(name: string): DataBase | undefined;
     set(name: string, value: string | number | boolean ): void;
     setAll(body: {name: string, value: string | number | boolean}[]): void;
     validate(): void;

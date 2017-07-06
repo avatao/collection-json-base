@@ -13,12 +13,21 @@ export class DataStore implements DataStoreAPI {
         this.dataStore.set(data.name, data);
     }
 
-    public data(name: string): DataBase {
+    public data(name: string): DataBase | undefined {
+        return this.dataStore.get(name);
+    }
+
+    public setDataValue(name: string, value: string | number | boolean | undefined) {
         const data = this.dataStore.get(name);
         if (typeof data !== 'undefined') {
-            return data;
-        } else {
-            throw new Error('Key not found');
+            data.value = value;
+        }
+    }
+
+    public getDataValue(name: string) {
+        const data = this.dataStore.get(name);
+        if (typeof data !== 'undefined') {
+            return data.value;
         }
     }
 

@@ -224,16 +224,12 @@ export abstract class TemplateBase implements Template {
         return { data: this.dataStore.json() }
     }
 
-    public data(name: string): DataBase {
-        if (typeof this.dataStore !== 'undefined') {
-            return this.dataStore.data(name);
-        } else {
-            throw new Error('This template has no data array!')
-        }
+    public data(name: string): DataBase | undefined {
+        return this.dataStore.data(name);
     }
 
     public set(name: string, value: string | number | boolean ) {
-        this.dataStore.data(name).value = value;
+        this.dataStore.setDataValue(name, value);
     }
 
     public setAll(body: {name: string, value: string | number | boolean}[]) {

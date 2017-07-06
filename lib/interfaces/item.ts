@@ -4,9 +4,10 @@ import {LinkBase} from '../models/link';
 import {DataBase} from '../models/data';
 
 export interface ItemAPI {
-    link(rel: string): LinkBase;
-    data(name: string): DataBase;
-    dataValue(name: string): string | number | boolean | undefined ;
+    link(rel: string): LinkBase | undefined;
+    data(name: string): DataBase | undefined;
+    getDataValue(name: string): string | number | boolean | undefined;
+    setDataValue(name: string, value: string | number | boolean | undefined): void;
     json(): ItemJSON;
 }
 

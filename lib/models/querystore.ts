@@ -13,13 +13,8 @@ export class QueryStore implements QueryStoreAPI {
         this.queries.set(query.rel, query);
     }
 
-    public query(rel: string): QueryBase {
-        const query = this.queries.get(rel);
-        if (typeof query !== 'undefined') {
-            return query;
-        } else {
-            throw new Error('Key not found');
-        }
+    public query(rel: string): QueryBase | undefined {
+        return this.queries.get(rel);
     }
 
     public json(): QueryJSON[] {

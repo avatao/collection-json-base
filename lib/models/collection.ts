@@ -63,28 +63,20 @@ export abstract class CollectionBase implements Collection {
     protected abstract parseTemplate(template: TemplateJSON): void;
     protected abstract parseError(error: ErrorJSON): void;
 
-    public link(rel: string): LinkBase {
+    public link(rel: string): LinkBase | undefined {
         if (typeof this.linkStore !== 'undefined') {
             return this.linkStore.link(rel);
-        } else {
-            throw new Error('There are no links stored in this Collection!');
         }
     }
 
-    public query(rel: string): QueryBase {
+    public query(rel: string): QueryBase | undefined {
         if (typeof this.queryStore !== 'undefined') {
             return this.queryStore.query(rel);
-        } else {
-            throw new Error('There are no queries stored in this Collection!');
         }
     }
 
-    public items(): ItemStore {
-        if (typeof this.itemStore !== 'undefined') {
-            return this.itemStore;
-        } else {
-            throw new Error('There are no items stored in this Collection!');
-        }
+    public items(): ItemStore | undefined {
+        return this.itemStore
     }
 
     public json(): {collection: CollectionJSON} {
