@@ -3,6 +3,7 @@
 
 * Not throwing errors when a data, item, query, link is missing, it will return
 undefined instead -> this way frameworks like Angular will require less boilerplate
+* items() method on the collection still throws error when no items are present
 * Renamed dataValue method to getDataValue
 
 1.0.0-beta.11 / 2017-07-04
