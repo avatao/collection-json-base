@@ -19,7 +19,7 @@ describe('Template Validation extension check with values', () => {
             data.value = 'hello world!';
             data.regexp = '^hello';
             expect( () => {
-                TemplateBase.templateValidationExtensionCheck(data)
+                TemplateBase.templateValidationExtensionCheck(data);
             }).to.not.throw();
         });
 
@@ -28,7 +28,7 @@ describe('Template Validation extension check with values', () => {
             data.regexp = '^[a-zA-Z0-9.!#$%&\'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?' +
                 '(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$';
             expect( () => {
-                TemplateBase.templateValidationExtensionCheck(data)
+                TemplateBase.templateValidationExtensionCheck(data);
             }).to.not.throw();
         });
 
@@ -37,7 +37,7 @@ describe('Template Validation extension check with values', () => {
             data.regexp = '^[a-zA-Z0-9.!#$%&\'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?' +
                 '(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$';
             expect( () => {
-                TemplateBase.templateValidationExtensionCheck(data)
+                TemplateBase.templateValidationExtensionCheck(data);
             }).to.throw('The data with the name: \'Test\' has the value: \'invalid.email.com\'.' +
                 '\nThis doesn\'t match the supplied regexp: \'^[a-zA-Z0-9.!#$%&\'*+\/=?^_`{|}~-]+@[a-zA-' +
                 'Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$\'');
@@ -47,7 +47,7 @@ describe('Template Validation extension check with values', () => {
             data.value = 'nothello world!';
             data.regexp = '^hello';
             expect( () => {
-                TemplateBase.templateValidationExtensionCheck(data)
+                TemplateBase.templateValidationExtensionCheck(data);
             }).to.throw('The data with the name: \'Test\' has the value: \'nothello world!\'.' +
                 '\nThis doesn\'t match the supplied regexp: \'^hello\'');
         });
@@ -61,7 +61,7 @@ describe('Template Validation extension check with values', () => {
             data.regexp = undefined;
             data.required = true;
             expect( () => {
-                TemplateBase.templateValidationExtensionCheck(data)
+                TemplateBase.templateValidationExtensionCheck(data);
             }).to.not.throw();
         });
 
@@ -70,7 +70,7 @@ describe('Template Validation extension check with values', () => {
             data.regexp = undefined;
             data.required = false;
             expect( () => {
-                TemplateBase.templateValidationExtensionCheck(data)
+                TemplateBase.templateValidationExtensionCheck(data);
             }).to.not.throw();
         });
 
@@ -79,7 +79,7 @@ describe('Template Validation extension check with values', () => {
             data.regexp = undefined;
             data.required = true;
             expect( () => {
-                TemplateBase.templateValidationExtensionCheck(data)
+                TemplateBase.templateValidationExtensionCheck(data);
             }).to.throw('The data with the name: \'Test\' is required, but the value or array was not supplied.');
         });
     });
@@ -92,7 +92,7 @@ describe('Template Validation extension check with values', () => {
             data.regexp = '^hello';
             data.required = true;
             expect( () => {
-                TemplateBase.templateValidationExtensionCheck(data)
+                TemplateBase.templateValidationExtensionCheck(data);
             }).to.not.throw();
         });
 
@@ -101,7 +101,7 @@ describe('Template Validation extension check with values', () => {
             data.regexp = '^hello';
             data.required = false;
             expect( () => {
-                TemplateBase.templateValidationExtensionCheck(data)
+                TemplateBase.templateValidationExtensionCheck(data);
             }).to.not.throw();
         });
 
@@ -110,7 +110,7 @@ describe('Template Validation extension check with values', () => {
             data.regexp = '^hello';
             data.required = false;
             expect( () => {
-                TemplateBase.templateValidationExtensionCheck(data)
+                TemplateBase.templateValidationExtensionCheck(data);
             }).to.throw('The data with the name: \'Test\' has the value: \'nothello\'.' +
             '\nThis doesn\'t match the supplied regexp: \'^hello\'');
         });

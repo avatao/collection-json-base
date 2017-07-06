@@ -20,7 +20,7 @@ export abstract class QueryBase implements Query {
         }
 
         if (typeof query.prompt !== 'undefined') {
-            this.prompt = query.prompt
+            this.prompt = query.prompt;
         }
 
         if (typeof query.data !== 'undefined') {
@@ -39,7 +39,7 @@ export abstract class QueryBase implements Query {
         }
 
         if (typeof this.prompt !== 'undefined') {
-            result.prompt = this.prompt
+            result.prompt = this.prompt;
         }
 
         if (typeof this.dataStore !== 'undefined') {

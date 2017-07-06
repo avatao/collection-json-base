@@ -37,9 +37,9 @@ export class ItemStore implements ItemStoreAPI {
      */
     public one(): ItemBase {
         if (this.items.length === 0) {
-            throw new Error('This item array is empty!')
+            throw new Error('This item array is empty!');
         } else if (this.items.length > 1) {
-            throw new Error(`The item array contains more than one values, use first() if you are sure you need the first one only!`)
+            throw new Error(`The item array contains more than one values, use first() if you are sure you need the first one only!`);
         } else {
             return this.items[0];
         }
@@ -49,7 +49,7 @@ export class ItemStore implements ItemStoreAPI {
         const result = [];
 
         for (const item of this) {
-            result.push(item.json())
+            result.push(item.json());
         }
 
         return result;

@@ -19,7 +19,7 @@ export abstract class ItemBase implements Item {
         }
 
         if (typeof item.data !== 'undefined') {
-            this.parseData(item.data)
+            this.parseData(item.data);
         }
     }
 
@@ -54,11 +54,11 @@ export abstract class ItemBase implements Item {
         };
 
         if (typeof this.linkStore !== 'undefined') {
-            result.links = this.linkStore.json()
+            result.links = this.linkStore.json();
         }
 
         if (typeof this.dataStore !== 'undefined') {
-            result.data = this.dataStore.json()
+            result.data = this.dataStore.json();
         }
 
         return result;

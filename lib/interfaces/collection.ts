@@ -18,8 +18,8 @@ export interface CollectionData {
 export interface CollectionAPI {
     link(rel: string): LinkBase | undefined;
     query(rel: string): QueryBase | undefined;
-    items(): ItemStore | undefined;
-    json(): {collection: CollectionJSON}
+    items(): ItemStore ;
+    json(): {collection: CollectionJSON};
 }
 
 export interface Collection extends CollectionData, CollectionAPI {}

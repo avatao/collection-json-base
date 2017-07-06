@@ -35,7 +35,7 @@ export class DataStore implements DataStoreAPI {
         const result = [];
 
         for (const data of this) {
-            result.push(data.json())
+            result.push(data.json());
         }
 
         return result;

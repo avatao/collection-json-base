@@ -13,7 +13,7 @@ export abstract class TemplateBase implements Template {
 
         if (typeof data.required !== 'undefined' && data.required === true) {
             if (typeof data.value === 'undefined' && typeof data.array === 'undefined') {
-                throw new Error(`The data with the name: '${data.name}' is required, but the value or array was not supplied.`)
+                throw new Error(`The data with the name: '${data.name}' is required, but the value or array was not supplied.`);
             }
         }
 
@@ -21,13 +21,13 @@ export abstract class TemplateBase implements Template {
             if (typeof data.value !== 'undefined') {
                 if (!RegExp(String(data.regexp)).test(String(data.value))) {
                     throw new Error(`The data with the name: '${data.name}' has the value: '${data.value}'.` +
-                        `\nThis doesn't match the supplied regexp: '${data.regexp}'`)
+                        `\nThis doesn't match the supplied regexp: '${data.regexp}'`);
                 }
             } else if (typeof data.array !== 'undefined') {
                 for (const item of data.array) {
                     if (!RegExp(String(data.regexp)).test(String(item))) {
                         throw new Error(`The data with the name: '${data.name}' has the array with values: '${data.array}'.` +
-                            `\nThe value: '${item}' doesn't match the supplied regexp: '${data.regexp}'`)
+                            `\nThe value: '${item}' doesn't match the supplied regexp: '${data.regexp}'`);
                     }
                 }
             }
@@ -221,7 +221,7 @@ export abstract class TemplateBase implements Template {
     public abstract update(): Observable<CollectionBase>;
 
     public json(): TemplateJSON {
-        return { data: this.dataStore.json() }
+        return { data: this.dataStore.json() };
     }
 
     public data(name: string): DataBase | undefined {

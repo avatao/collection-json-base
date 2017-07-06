@@ -9,10 +9,10 @@ export interface CollectionJSON {
 }
 
 export interface ValidationJSON {
-    name: string
-    prompt?: string
-    arguments?: {name: string, value: string | number | boolean}[]
-    message?: string
+    name: string;
+    prompt?: string;
+    arguments?: {name: string, value: string | number | boolean}[];
+    message?: string;
 }
 
 export interface DataJSON {
@@ -23,7 +23,7 @@ export interface DataJSON {
     prompt?: string;
     regexp?: string;
     required?: boolean;
-    validations?: ValidationJSON[]
+    validations?: ValidationJSON[];
 }
 
 export interface ErrorJSON {

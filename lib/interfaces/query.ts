@@ -12,7 +12,7 @@ export interface QueryData {
 
 export interface QueryAPI {
     send(params: { name: string, value: string | number | boolean }[]): Observable<CollectionBase>;
-    json(): QueryJSON
+    json(): QueryJSON;
 }
 
 export interface Query extends QueryData, QueryAPI {}

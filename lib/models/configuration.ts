@@ -7,7 +7,7 @@ export class CollectionConfigurationManager {
         if (typeof CollectionConfiguration.httpService !== 'undefined') {
             return CollectionConfiguration.httpService as T;
         } else {
-            throw new Error('You need to set the http service -> CollectionConfigurationManager.setHttpService<\T>(http)')
+            throw new Error('You need to set the http service -> CollectionConfigurationManager.setHttpService<\T>(http)');
         }
     }
 

@@ -20,7 +20,7 @@ export class LinkStore implements LinkStoreAPI {
         const result: LinkJSON[] = [];
 
         for (const link of this) {
-            result.push(link.json())
+            result.push(link.json());
         }
 
         return result;

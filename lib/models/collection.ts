@@ -75,8 +75,12 @@ export abstract class CollectionBase implements Collection {
         }
     }
 
-    public items(): ItemStore | undefined {
-        return this.itemStore
+    public items(): ItemStore {
+        if (typeof this.itemStore !== 'undefined') {
+            return this.itemStore;
+        } else {
+            throw new Error('There are no items on this Collection');
+        }
     }
 
     public json(): {collection: CollectionJSON} {

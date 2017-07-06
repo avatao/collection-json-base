@@ -21,7 +21,7 @@ export class QueryStore implements QueryStoreAPI {
         const result: QueryJSON[] = [];
 
         for (const query of this) {
-            result.push(query.json())
+            result.push(query.json());
         }
 
         return result;
