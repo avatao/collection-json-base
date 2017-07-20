@@ -1,3 +1,8 @@
+1.0.0-beta.15 / 2017-07-20
+==================
+
+* Private variables made protected to allow access to child classes 
+
 1.0.0-beta.14 / 2017-07-20
 ==================
 
