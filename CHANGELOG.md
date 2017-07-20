@@ -1,3 +1,8 @@
+1.0.0-beta.14 / 2017-07-20
+==================
+
+* Made *store objects private and created getter methods 
+
 1.0.0-beta.13 / 2017-07-20
 ==================
 
