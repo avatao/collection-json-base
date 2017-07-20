@@ -41,11 +41,52 @@ export abstract class ItemBase implements Item {
         }
     }
 
+
+    public getDataArray(name: string): (string | number | boolean)[] | undefined {
+        if (typeof this.dataStore !== 'undefined') {
+            return this.dataStore.getDataArray(name);
+        }
+    }
+
     public setDataValue(name: string, value: string | number | boolean | undefined): void {
         if (typeof this.dataStore !== 'undefined') {
             return this.dataStore.setDataValue(name, value);
         }
     }
+
+    public setDataArray(name: string, array: (string | number | boolean)[] | undefined) {
+        if (typeof this.dataStore !== 'undefined') {
+            return this.dataStore.setDataArray(name, array);
+        }
+    }
+
+    public dataHasValue(name: string): boolean {
+        if (typeof this.dataStore !== 'undefined') {
+            return this.dataStore.dataHasValue(name);
+        }
+        return false;
+    }
+
+    public dataHasArray(name: string): boolean {
+        if (typeof this.dataStore !== 'undefined') {
+            return this.dataStore.dataHasArray(name);
+        }
+        return false;
+    }
+
+    public dataToObject(): any {
+        if (typeof this.dataStore !== 'undefined') {
+            return this.dataStore.dataToObject();
+        }
+        return {};
+    }
+
+    public getDataStore(): DataStore | undefined {
+        if (typeof this.dataStore !== 'undefined') {
+            return this.dataStore;
+        }
+    }
+
 
     public json(): ItemJSON {
 

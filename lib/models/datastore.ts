@@ -24,11 +24,41 @@ export class DataStore implements DataStoreAPI {
         }
     }
 
-    public getDataValue(name: string) {
+    public setDataArray(name: string, array: (string | number | boolean)[] | undefined) {
+        const data = this.dataStore.get(name);
+        if (typeof data !== 'undefined') {
+            data.array = array;
+        }
+    }
+
+    public getDataValue(name: string): string | number | boolean | undefined {
         const data = this.dataStore.get(name);
         if (typeof data !== 'undefined') {
             return data.value;
         }
+    }
+
+    public getDataArray(name: string): (string | number | boolean)[] | undefined {
+        const data = this.dataStore.get(name);
+        if (typeof data !== 'undefined') {
+            return data.array;
+        }
+    }
+
+    public dataHasValue(name: string): boolean {
+        const data = this.dataStore.get(name);
+        if (typeof data !== 'undefined') {
+            return typeof data.value !== 'undefined';
+        }
+        return false;
+    }
+
+    public dataHasArray(name: string): boolean {
+        const data = this.dataStore.get(name);
+        if (typeof data !== 'undefined') {
+            return typeof data.array !== 'undefined';
+        }
+        return false;
     }
 
     public json(): DataJSON[] {
@@ -39,6 +69,17 @@ export class DataStore implements DataStoreAPI {
         }
 
         return result;
+    }
+
+    public dataToObject(): any {
+        const result: any = {};
+        for (const data of this) {
+            if (typeof data.value !== 'undefined') {
+                result[data.name] = data.value;
+            } else {
+                result[data.name] = data.array;
+            }
+        }
     }
 
     [Symbol.iterator]() {
