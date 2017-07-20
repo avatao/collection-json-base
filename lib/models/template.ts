@@ -236,17 +236,17 @@ export abstract class TemplateBase implements Template {
         }
     }
 
-    public set(name: string, value: string | number | boolean ) {
+    public set(name: string, value: string | number | boolean): void {
         this._dataStore.setDataValue(name, value);
     }
 
-    public setAll(body: {name: string, value: string | number | boolean}[]) {
+    public setAll(body: {name: string, value: string | number | boolean}[]): void {
         for (const item of body) {
             this.set(item.name, item.value);
         }
     }
 
-    public setWithDataObject(dataObject: any) {
+    public setWithDataObject(dataObject: any): void {
         for (const propertyName in dataObject) {
             if (dataObject.hasOwnProperty(propertyName)) {
                 this.set(propertyName, dataObject[propertyName]);
