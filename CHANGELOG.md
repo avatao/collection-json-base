@@ -1,3 +1,9 @@
+1.0.0-beta.13 / 2017-07-20
+==================
+
+* Added convenience methods (getDataArray, setDataArray etc.)
+* Ability to create a javascript object from data (dataToObject)
+
 1.0.0-beta.12 / 2017-07-06
 ==================
 
