@@ -9,7 +9,7 @@ export abstract class QueryBase implements Query {
     public rel: string;
     public name?: string;
     public prompt?: string;
-    public dataStore?: DataStore;
+    private _dataStore?: DataStore;
 
     constructor(query: QueryJSON) {
         this.href = query.href;
@@ -28,8 +28,13 @@ export abstract class QueryBase implements Query {
         }
     }
 
-    protected abstract parseData(data: DataJSON[]): void;
-    public abstract send(params: { name: string, value: string | number | boolean }[]): Observable<CollectionBase>;
+    public allData(): DataStore {
+        if (typeof this._dataStore !== 'undefined') {
+            return this._dataStore;
+        } else {
+            throw new Error('There are no data on this Query');
+        }
+    }
 
     public json(): QueryJSON {
         const result: QueryJSON = {href: this.href, rel: this.rel};
@@ -42,10 +47,14 @@ export abstract class QueryBase implements Query {
             result.prompt = this.prompt;
         }
 
-        if (typeof this.dataStore !== 'undefined') {
-            result.data = this.dataStore.json();
+        if (typeof this._dataStore !== 'undefined') {
+            result.data = this._dataStore.json();
         }
 
         return result;
     }
+
+    protected abstract parseData(data: DataJSON[]): void;
+    public abstract send(params: { name: string, value: string | number | boolean }[]): Observable<CollectionBase>;
+
 }

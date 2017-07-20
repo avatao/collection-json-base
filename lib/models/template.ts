@@ -7,7 +7,7 @@ import {DataBase} from './data';
 
 export abstract class TemplateBase implements Template {
 
-    public dataStore: DataStore;
+    private _dataStore: DataStore;
 
     static templateValidationExtensionCheck(data: DataBase): void {
 
@@ -221,15 +221,23 @@ export abstract class TemplateBase implements Template {
     public abstract update(): Observable<CollectionBase>;
 
     public json(): TemplateJSON {
-        return { data: this.dataStore.json() };
+        return { data: this._dataStore.json() };
     }
 
     public data(name: string): DataBase | undefined {
-        return this.dataStore.data(name);
+        return this._dataStore.data(name);
+    }
+
+    public allData(): DataStore {
+        if (typeof this._dataStore !== 'undefined') {
+            return this._dataStore;
+        } else {
+            throw new Error('There are no data on this Template');
+        }
     }
 
     public set(name: string, value: string | number | boolean ) {
-        this.dataStore.setDataValue(name, value);
+        this._dataStore.setDataValue(name, value);
     }
 
     public setAll(body: {name: string, value: string | number | boolean}[]) {
@@ -239,7 +247,7 @@ export abstract class TemplateBase implements Template {
     }
 
     public validate() {
-        for (const data of this.dataStore) {
+        for (const data of this._dataStore) {
             TemplateBase.templateValidationExtensionCheck(data);
             TemplateBase.validationsArrayExtensionCheck(data);
         }

@@ -6,6 +6,8 @@ import {DataBase} from '../models/data';
 export interface ItemAPI {
     link(rel: string): LinkBase | undefined;
     data(name: string): DataBase | undefined;
+    allData(): DataStore;
+    links(): LinkStore;
     setDataValue(name: string, value: string | number | boolean | undefined): void;
     setDataArray(name: string, array: (string | number | boolean)[] | undefined): void;
     getDataValue(name: string): string | number | boolean | undefined;
@@ -13,14 +15,11 @@ export interface ItemAPI {
     dataHasValue(name: string): boolean;
     dataHasArray(name: string): boolean;
     dataToObject(): any;
-    getDataStore(): DataStore | undefined;
     json(): ItemJSON;
 }
 
 export interface ItemData {
     href: string;
-    linkStore?: LinkStore;
-    dataStore?: DataStore;
 }
 
 export interface Item extends ItemData, ItemAPI {}

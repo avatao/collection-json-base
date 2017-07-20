@@ -19,11 +19,11 @@ import {TemplateBase} from './template';
 export abstract class CollectionBase implements Collection {
     public version: string;
     public href?: string;
-    public linkStore?: LinkStore;
-    public itemStore?: ItemStore;
-    public queryStore?: QueryStore;
-    public template?: TemplateBase;
-    public error?: ErrorBase;
+    private _linkStore?: LinkStore;
+    private _itemStore?: ItemStore;
+    private _queryStore?: QueryStore;
+    private _template?: TemplateBase;
+    private _error?: ErrorBase;
 
     constructor(collection: CollectionJSON) {
         this.version = collection.version || '1.0';
@@ -60,26 +60,51 @@ export abstract class CollectionBase implements Collection {
     protected abstract parseLinks(links: LinkJSON[]): void;
     protected abstract parseItems(items: ItemJSON[]): void;
     protected abstract parseQueries(queries: QueryJSON[]): void;
-    protected abstract parseTemplate(template: TemplateJSON): void;
-    protected abstract parseError(error: ErrorJSON): void;
+    protected abstract parseTemplate(_template: TemplateJSON): void;
+    protected abstract parseError(_error: ErrorJSON): void;
 
     public link(rel: string): LinkBase | undefined {
-        if (typeof this.linkStore !== 'undefined') {
-            return this.linkStore.link(rel);
+        if (typeof this._linkStore !== 'undefined') {
+            return this._linkStore.link(rel);
         }
     }
 
     public query(rel: string): QueryBase | undefined {
-        if (typeof this.queryStore !== 'undefined') {
-            return this.queryStore.query(rel);
+        if (typeof this._queryStore !== 'undefined') {
+            return this._queryStore.query(rel);
         }
     }
 
+    public template(): TemplateBase | undefined {
+        return this._template;
+    }
+
+    public error(): ErrorBase | undefined {
+        return this._error;
+    }
+
+
     public items(): ItemStore {
-        if (typeof this.itemStore !== 'undefined') {
-            return this.itemStore;
+        if (typeof this._itemStore !== 'undefined') {
+            return this._itemStore;
         } else {
             throw new Error('There are no items on this Collection');
+        }
+    }
+
+    public queries(): QueryStore {
+        if (typeof this._queryStore !== 'undefined') {
+            return this._queryStore;
+        } else {
+            throw new Error('There are no queries on this Collection');
+        }
+    }
+
+    public links(): LinkStore {
+        if (typeof this._linkStore !== 'undefined') {
+            return this._linkStore;
+        } else {
+            throw new Error('There are no links on this Collection');
         }
     }
 
@@ -87,27 +112,27 @@ export abstract class CollectionBase implements Collection {
 
         const result: {collection: CollectionJSON} = {collection: {version: this.version, href: this.href}};
 
-        if (typeof this.linkStore !== 'undefined') {
-            result.collection.links = this.linkStore.json();
+        if (typeof this._linkStore !== 'undefined') {
+            result.collection.links = this._linkStore.json();
         }
 
-        if (typeof this.itemStore !== 'undefined') {
+        if (typeof this._itemStore !== 'undefined') {
             result.collection.items = [];
-            for (const item of this.itemStore) {
-                result.collection.items.push(item.json())
+            for (const item of this._itemStore) {
+                result.collection.items.push(item.json());
             }
         }
 
-        if (typeof this.queryStore !== 'undefined') {
-            result.collection.queries = this.queryStore.json();
+        if (typeof this._queryStore !== 'undefined') {
+            result.collection.queries = this._queryStore.json();
         }
 
-        if (typeof this.template !== 'undefined') {
-            result.collection.template = this.template.json();
+        if (typeof this._template !== 'undefined') {
+            result.collection.template = this._template.json();
         }
 
-        if (typeof this.error !== 'undefined') {
-            result.collection.error = this.error.json();
+        if (typeof this._error !== 'undefined') {
+            result.collection.error = this._error.json();
         }
 
         return result;

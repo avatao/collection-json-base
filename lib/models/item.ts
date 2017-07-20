@@ -8,8 +8,8 @@ import {DataBase} from './data';
 export abstract class ItemBase implements Item {
 
     public href: string;
-    public linkStore?: LinkStore;
-    public dataStore?: DataStore;
+    private _linkStore?: LinkStore;
+    private _dataStore?: DataStore;
 
     constructor(item: ItemJSON) {
         this.href = item.href;
@@ -24,67 +24,77 @@ export abstract class ItemBase implements Item {
     }
 
     public link(rel: string): LinkBase | undefined {
-        if (typeof this.linkStore !== 'undefined') {
-            return this.linkStore.link(rel);
+        if (typeof this._linkStore !== 'undefined') {
+            return this._linkStore.link(rel);
         }
     }
 
     public data(name: string): DataBase | undefined {
-        if (typeof this.dataStore !== 'undefined') {
-            return this.dataStore.data(name);
+        if (typeof this._dataStore !== 'undefined') {
+            return this._dataStore.data(name);
+        }
+    }
+
+    public allData(): DataStore {
+        if (typeof this._dataStore !== 'undefined') {
+            return this._dataStore;
+        } else {
+            throw new Error('There are no data on this Item');
+        }
+    }
+
+    public links(): LinkStore {
+        if (typeof this._linkStore !== 'undefined') {
+            return this._linkStore;
+        } else {
+            throw new Error('There are no links on this Item');
         }
     }
 
     public getDataValue(name: string): string | number | boolean | undefined {
-        if (typeof this.dataStore !== 'undefined') {
-            return this.dataStore.getDataValue(name);
+        if (typeof this._dataStore !== 'undefined') {
+            return this._dataStore.getDataValue(name);
         }
     }
 
 
     public getDataArray(name: string): (string | number | boolean)[] | undefined {
-        if (typeof this.dataStore !== 'undefined') {
-            return this.dataStore.getDataArray(name);
+        if (typeof this._dataStore !== 'undefined') {
+            return this._dataStore.getDataArray(name);
         }
     }
 
     public setDataValue(name: string, value: string | number | boolean | undefined): void {
-        if (typeof this.dataStore !== 'undefined') {
-            return this.dataStore.setDataValue(name, value);
+        if (typeof this._dataStore !== 'undefined') {
+            return this._dataStore.setDataValue(name, value);
         }
     }
 
     public setDataArray(name: string, array: (string | number | boolean)[] | undefined) {
-        if (typeof this.dataStore !== 'undefined') {
-            return this.dataStore.setDataArray(name, array);
+        if (typeof this._dataStore !== 'undefined') {
+            return this._dataStore.setDataArray(name, array);
         }
     }
 
     public dataHasValue(name: string): boolean {
-        if (typeof this.dataStore !== 'undefined') {
-            return this.dataStore.dataHasValue(name);
+        if (typeof this._dataStore !== 'undefined') {
+            return this._dataStore.dataHasValue(name);
         }
         return false;
     }
 
     public dataHasArray(name: string): boolean {
-        if (typeof this.dataStore !== 'undefined') {
-            return this.dataStore.dataHasArray(name);
+        if (typeof this._dataStore !== 'undefined') {
+            return this._dataStore.dataHasArray(name);
         }
         return false;
     }
 
     public dataToObject(): any {
-        if (typeof this.dataStore !== 'undefined') {
-            return this.dataStore.dataToObject();
+        if (typeof this._dataStore !== 'undefined') {
+            return this._dataStore.dataToObject();
         }
         return {};
-    }
-
-    public getDataStore(): DataStore | undefined {
-        if (typeof this.dataStore !== 'undefined') {
-            return this.dataStore;
-        }
     }
 
 
@@ -94,12 +104,12 @@ export abstract class ItemBase implements Item {
             href: this.href
         };
 
-        if (typeof this.linkStore !== 'undefined') {
-            result.links = this.linkStore.json();
+        if (typeof this._linkStore !== 'undefined') {
+            result.links = this._linkStore.json();
         }
 
-        if (typeof this.dataStore !== 'undefined') {
-            result.data = this.dataStore.json();
+        if (typeof this._dataStore !== 'undefined') {
+            result.data = this._dataStore.json();
         }
 
         return result;

@@ -8,17 +8,16 @@ import {ErrorBase} from '../models/error';
 export interface CollectionData {
     version: string;
     href?: string;
-    linkStore?: LinkStore;
-    itemStore?: ItemStore;
-    queryStore?: QueryStore;
-    template?: TemplateBase;
-    error?: ErrorBase;
 }
 
 export interface CollectionAPI {
     link(rel: string): LinkBase | undefined;
     query(rel: string): QueryBase | undefined;
-    items(): ItemStore ;
+    template(): TemplateBase | undefined;
+    error(): ErrorBase | undefined;
+    items(): ItemStore;
+    links(): LinkStore;
+    queries(): QueryStore;
     json(): {collection: CollectionJSON};
 }
 
