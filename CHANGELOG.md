@@ -1,3 +1,8 @@
+1.0.0-beta.16 / 2017-07-20
+==================
+
+* Hotfix: dataToObject had no return value
+
 1.0.0-beta.15 / 2017-07-20
 ==================
 
