@@ -80,6 +80,7 @@ export class DataStore implements DataStoreAPI {
                 result[data.name] = data.array;
             }
         }
+        return result;
     }
 
     [Symbol.iterator]() {
