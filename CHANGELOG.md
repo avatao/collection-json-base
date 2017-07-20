@@ -1,3 +1,9 @@
+1.0.0-beta.17 / 2017-07-20
+==================
+
+* Added setWithDataObject to template, this way a dataObject can be used
+to set up the template values
+
 1.0.0-beta.16 / 2017-07-20
 ==================
 
