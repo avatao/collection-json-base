@@ -9,7 +9,7 @@ export abstract class QueryBase implements Query {
     public rel: string;
     public name?: string;
     public prompt?: string;
-    private _dataStore?: DataStore;
+    protected _dataStore?: DataStore;
 
     constructor(query: QueryJSON) {
         this.href = query.href;

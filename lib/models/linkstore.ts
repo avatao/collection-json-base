@@ -3,17 +3,18 @@ import {LinkStoreAPI} from '../interfaces/linkstore';
 import {LinkBase} from './link';
 
 export class LinkStore implements LinkStoreAPI {
-    private links: Map<string, LinkBase>;
+    protected _links: Map<string, LinkBase>;
+    
     constructor() {
-        this.links = new Map();
+        this._links = new Map();
     }
 
     public add(link: LinkBase) {
-        this.links.set(link.rel, link);
+        this._links.set(link.rel, link);
     }
 
     public link(rel: string): LinkBase | undefined {
-        return this.links.get(rel);
+        return this._links.get(rel);
     }
 
     public json(): LinkJSON[] {
@@ -27,6 +28,6 @@ export class LinkStore implements LinkStoreAPI {
     }
 
     [Symbol.iterator]() {
-        return this.links.values();
+        return this._links.values();
     }
 }

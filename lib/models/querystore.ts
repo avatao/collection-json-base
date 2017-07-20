@@ -3,18 +3,18 @@ import {QueryJSON} from '../interfaces/json';
 import {QueryBase} from './query';
 
 export class QueryStore implements QueryStoreAPI {
-    private queries: Map<string, QueryBase>;
+    protected _queries: Map<string, QueryBase>;
 
     constructor() {
-        this.queries = new Map();
+        this._queries = new Map();
     }
 
     public add(query: QueryBase) {
-        this.queries.set(query.rel, query);
+        this._queries.set(query.rel, query);
     }
 
     public query(rel: string): QueryBase | undefined {
-        return this.queries.get(rel);
+        return this._queries.get(rel);
     }
 
     public json(): QueryJSON[] {
@@ -28,7 +28,7 @@ export class QueryStore implements QueryStoreAPI {
     }
 
     [Symbol.iterator]() {
-        return this.queries.values();
+        return this._queries.values();
     }
 
 }

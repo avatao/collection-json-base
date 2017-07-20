@@ -3,14 +3,14 @@ import {ItemStoreAPI} from '../interfaces/itemstore';
 import {ItemBase} from './item';
 
 export class ItemStore implements ItemStoreAPI {
-    private items: ItemBase[];
+    protected _items: ItemBase[];
 
     constructor() {
-        this.items = [];
+        this._items = [];
     }
 
     public add(item: ItemBase): void {
-        this.items.push(item);
+        this._items.push(item);
     }
 
     /**
@@ -18,7 +18,7 @@ export class ItemStore implements ItemStoreAPI {
      * @returns {ItemBase[]} the items array
      */
     public all(): ItemBase[] {
-        return this.items;
+        return this._items;
     }
 
     /**
@@ -27,7 +27,7 @@ export class ItemStore implements ItemStoreAPI {
      * @returns {ItemBase} the first item in the array
      */
     public first(): ItemBase | undefined {
-        return this.items[0];
+        return this._items[0];
     }
 
     /**
@@ -36,12 +36,12 @@ export class ItemStore implements ItemStoreAPI {
      * @returns {ItemBase} the first and only item in the array
      */
     public one(): ItemBase {
-        if (this.items.length === 0) {
+        if (this._items.length === 0) {
             throw new Error('This item array is empty!');
-        } else if (this.items.length > 1) {
+        } else if (this._items.length > 1) {
             throw new Error(`The item array contains more than one values, use first() if you are sure you need the first one only!`);
         } else {
-            return this.items[0];
+            return this._items[0];
         }
     }
 
@@ -56,7 +56,7 @@ export class ItemStore implements ItemStoreAPI {
     }
 
     [Symbol.iterator]() {
-        return this.items[Symbol.iterator]();
+        return this._items[Symbol.iterator]();
     }
 
 }

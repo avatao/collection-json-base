@@ -7,7 +7,7 @@ import {DataBase} from './data';
 
 export abstract class TemplateBase implements Template {
 
-    private _dataStore: DataStore;
+    protected _dataStore: DataStore;
 
     static templateValidationExtensionCheck(data: DataBase): void {
 

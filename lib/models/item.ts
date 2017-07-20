@@ -8,8 +8,8 @@ import {DataBase} from './data';
 export abstract class ItemBase implements Item {
 
     public href: string;
-    private _linkStore?: LinkStore;
-    private _dataStore?: DataStore;
+    protected _linkStore?: LinkStore;
+    protected _dataStore?: DataStore;
 
     constructor(item: ItemJSON) {
         this.href = item.href;

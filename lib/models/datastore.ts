@@ -3,50 +3,50 @@ import {DataJSON} from '../interfaces/json';
 import {DataBase} from './data';
 
 export class DataStore implements DataStoreAPI {
-    private dataStore: Map<string, DataBase>;
+    protected _dataStore: Map<string, DataBase>;
 
     constructor() {
-        this.dataStore = new Map();
+        this._dataStore = new Map();
     }
 
     public add(data: DataBase) {
-        this.dataStore.set(data.name, data);
+        this._dataStore.set(data.name, data);
     }
 
     public data(name: string): DataBase | undefined {
-        return this.dataStore.get(name);
+        return this._dataStore.get(name);
     }
 
     public setDataValue(name: string, value: string | number | boolean | undefined) {
-        const data = this.dataStore.get(name);
+        const data = this._dataStore.get(name);
         if (typeof data !== 'undefined') {
             data.value = value;
         }
     }
 
     public setDataArray(name: string, array: (string | number | boolean)[] | undefined) {
-        const data = this.dataStore.get(name);
+        const data = this._dataStore.get(name);
         if (typeof data !== 'undefined') {
             data.array = array;
         }
     }
 
     public getDataValue(name: string): string | number | boolean | undefined {
-        const data = this.dataStore.get(name);
+        const data = this._dataStore.get(name);
         if (typeof data !== 'undefined') {
             return data.value;
         }
     }
 
     public getDataArray(name: string): (string | number | boolean)[] | undefined {
-        const data = this.dataStore.get(name);
+        const data = this._dataStore.get(name);
         if (typeof data !== 'undefined') {
             return data.array;
         }
     }
 
     public dataHasValue(name: string): boolean {
-        const data = this.dataStore.get(name);
+        const data = this._dataStore.get(name);
         if (typeof data !== 'undefined') {
             return typeof data.value !== 'undefined';
         }
@@ -54,7 +54,7 @@ export class DataStore implements DataStoreAPI {
     }
 
     public dataHasArray(name: string): boolean {
-        const data = this.dataStore.get(name);
+        const data = this._dataStore.get(name);
         if (typeof data !== 'undefined') {
             return typeof data.array !== 'undefined';
         }
@@ -83,7 +83,7 @@ export class DataStore implements DataStoreAPI {
     }
 
     [Symbol.iterator]() {
-        return this.dataStore.values();
+        return this._dataStore.values();
     }
 
 }

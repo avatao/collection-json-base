@@ -19,11 +19,11 @@ import {TemplateBase} from './template';
 export abstract class CollectionBase implements Collection {
     public version: string;
     public href?: string;
-    private _linkStore?: LinkStore;
-    private _itemStore?: ItemStore;
-    private _queryStore?: QueryStore;
-    private _template?: TemplateBase;
-    private _error?: ErrorBase;
+    protected _linkStore?: LinkStore;
+    protected _itemStore?: ItemStore;
+    protected _queryStore?: QueryStore;
+    protected _template?: TemplateBase;
+    protected _error?: ErrorBase;
 
     constructor(collection: CollectionJSON) {
         this.version = collection.version || '1.0';
