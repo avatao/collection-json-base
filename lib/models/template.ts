@@ -246,6 +246,14 @@ export abstract class TemplateBase implements Template {
         }
     }
 
+    public setWithDataObject(dataObject: any) {
+        for (const propertyName in dataObject) {
+            if (dataObject.hasOwnProperty(propertyName)) {
+                this.set(propertyName, dataObject[propertyName]);
+            }
+        }
+    }
+
     public validate() {
         for (const data of this._dataStore) {
             TemplateBase.templateValidationExtensionCheck(data);
