@@ -10,6 +10,7 @@ export interface TemplateAPI {
     json(): TemplateJSON;
     data(name: string): DataBase | undefined;
     allData(): DataStore;
+    hasData(): boolean;
     set(name: string, value: string | number | boolean ): void;
     setAll(body: {name: string, value: string | number | boolean}[]): void;
     setWithDataObject(dataObject: any): void;

@@ -1,7 +1,6 @@
 import {Observable} from 'rxjs/Observable';
 import {DataStore, CollectionBase} from '../models';
 import {QueryJSON} from './json';
-import {Data} from './data';
 
 export interface QueryData {
     href: string;
@@ -14,6 +13,7 @@ export interface QueryData {
 export interface QueryAPI {
     send(params: { name: string, value: string | number | boolean }[]): Observable<CollectionBase>;
     allData(): DataStore;
+    hasData(): boolean;
     json(): QueryJSON;
 }
 

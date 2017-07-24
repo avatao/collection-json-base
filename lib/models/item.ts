@@ -43,6 +43,10 @@ export abstract class ItemBase implements Item {
         }
     }
 
+    public hasData(): boolean {
+        return typeof this._dataStore !== 'undefined';
+    }
+
     public links(): LinkStore {
         if (typeof this._linkStore !== 'undefined') {
             return this._linkStore;

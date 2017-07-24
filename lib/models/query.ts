@@ -36,6 +36,10 @@ export abstract class QueryBase implements Query {
         }
     }
 
+    public hasData(): boolean {
+        return typeof this._dataStore !== 'undefined';
+    }
+
     public json(): QueryJSON {
         const result: QueryJSON = {href: this.href, rel: this.rel};
 

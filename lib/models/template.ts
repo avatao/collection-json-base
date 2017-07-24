@@ -236,6 +236,10 @@ export abstract class TemplateBase implements Template {
         }
     }
 
+    public hasData(): boolean {
+        return typeof this._dataStore !== 'undefined';
+    }
+
     public set(name: string, value: string | number | boolean): void {
         this._dataStore.setDataValue(name, value);
     }
