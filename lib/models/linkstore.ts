@@ -4,7 +4,7 @@ import {LinkBase} from './link';
 
 export class LinkStore implements LinkStoreAPI {
     protected _links: Map<string, LinkBase>;
-    
+
     constructor() {
         this._links = new Map();
     }

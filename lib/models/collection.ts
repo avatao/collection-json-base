@@ -92,6 +92,10 @@ export abstract class CollectionBase implements Collection {
         }
     }
 
+    public hasItems(): boolean {
+        return typeof this._itemStore !== 'undefined';
+    }
+
     public queries(): QueryStore {
         if (typeof this._queryStore !== 'undefined') {
             return this._queryStore;
@@ -100,12 +104,20 @@ export abstract class CollectionBase implements Collection {
         }
     }
 
+    public hasQueries(): boolean {
+        return typeof this._queryStore !== 'undefined';
+    }
+
     public links(): LinkStore {
         if (typeof this._linkStore !== 'undefined') {
             return this._linkStore;
         } else {
             throw new Error('There are no links on this Collection');
         }
+    }
+
+    public hasLinks(): boolean {
+        return typeof this._linkStore !== 'undefined';
     }
 
     public json(): {collection: CollectionJSON} {

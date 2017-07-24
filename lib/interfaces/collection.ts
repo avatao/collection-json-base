@@ -16,8 +16,11 @@ export interface CollectionAPI {
     template(): TemplateBase | undefined;
     error(): ErrorBase | undefined;
     items(): ItemStore;
+    hasItems(): boolean;
     links(): LinkStore;
+    hasLinks(): boolean;
     queries(): QueryStore;
+    hasQueries(): boolean;
     json(): {collection: CollectionJSON};
 }
 
