@@ -1,3 +1,9 @@
+1.0.0-beta.18 / 2017-07-24
+==================
+
+* Added hasItems, hasQueries, hasData, hasLinks methods for
+checking their existence before trying to get them with an error
+
 1.0.0-beta.17 / 2017-07-20
 ==================
 
