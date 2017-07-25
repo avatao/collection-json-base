@@ -11,10 +11,10 @@ export interface ItemAPI {
     hasLinks(): boolean;
     allData(): DataStore;
     hasData(): boolean;
-    setDataValue(name: string, value: string | number | boolean | undefined): void;
-    setDataArray(name: string, array: (string | number | boolean)[] | undefined): void;
-    getDataValue(name: string): string | number | boolean | undefined;
-    getDataArray(name: string): (string | number | boolean)[] | undefined;
+    setDataValue(name: string, value: string | number | boolean | null | undefined): void;
+    setDataArray(name: string, array: (string | number | boolean | null)[] | null | undefined): void;
+    getDataValue(name: string): string | number | boolean | null | undefined;
+    getDataArray(name: string): (string | number | boolean | null)[] | null | undefined;
     dataHasValue(name: string): boolean;
     dataHasArray(name: string): boolean;
     dataToObject(): any;

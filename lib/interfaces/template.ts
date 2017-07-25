@@ -14,6 +14,7 @@ export interface TemplateAPI {
     set(name: string, value: string | number | boolean ): void;
     setAll(body: {name: string, value: string | number | boolean}[]): void;
     setWithDataObject(dataObject: any): void;
+    clear(): void;
     validate(): void;
 }
 

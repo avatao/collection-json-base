@@ -59,26 +59,26 @@ export abstract class ItemBase implements Item {
         return typeof this._linkStore !== 'undefined';
     }
 
-    public getDataValue(name: string): string | number | boolean | undefined {
+    public getDataValue(name: string): string | number | boolean | null | undefined {
         if (typeof this._dataStore !== 'undefined') {
             return this._dataStore.getDataValue(name);
         }
     }
 
 
-    public getDataArray(name: string): (string | number | boolean)[] | undefined {
+    public getDataArray(name: string): (string | number | boolean | null)[] | null | undefined {
         if (typeof this._dataStore !== 'undefined') {
             return this._dataStore.getDataArray(name);
         }
     }
 
-    public setDataValue(name: string, value: string | number | boolean | undefined): void {
+    public setDataValue(name: string, value: string | number | boolean | null | undefined): void {
         if (typeof this._dataStore !== 'undefined') {
             return this._dataStore.setDataValue(name, value);
         }
     }
 
-    public setDataArray(name: string, array: (string | number | boolean)[] | undefined) {
+    public setDataArray(name: string, array: (string | number | boolean | null)[] | null | undefined) {
         if (typeof this._dataStore !== 'undefined') {
             return this._dataStore.setDataArray(name, array);
         }

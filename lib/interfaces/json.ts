@@ -17,8 +17,8 @@ export interface ValidationJSON {
 
 export interface DataJSON {
     name: string;
-    value?: string | number | boolean;
-    array?: (string | number | boolean)[];
+    value?: string | number | boolean | null;
+    array?: (string | number | boolean | null)[] | null;
     object?: any;
     prompt?: string;
     regexp?: string;

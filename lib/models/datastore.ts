@@ -17,28 +17,28 @@ export class DataStore implements DataStoreAPI {
         return this._dataStore.get(name);
     }
 
-    public setDataValue(name: string, value: string | number | boolean | undefined) {
+    public setDataValue(name: string, value: string | number | boolean | null | undefined) {
         const data = this._dataStore.get(name);
         if (typeof data !== 'undefined') {
             data.value = value;
         }
     }
 
-    public setDataArray(name: string, array: (string | number | boolean)[] | undefined) {
+    public setDataArray(name: string, array: (string | number | boolean | null)[] | null | undefined) {
         const data = this._dataStore.get(name);
         if (typeof data !== 'undefined') {
             data.array = array;
         }
     }
 
-    public getDataValue(name: string): string | number | boolean | undefined {
+    public getDataValue(name: string): string | number | boolean | null | undefined {
         const data = this._dataStore.get(name);
         if (typeof data !== 'undefined') {
             return data.value;
         }
     }
 
-    public getDataArray(name: string): (string | number | boolean)[] | undefined {
+    public getDataArray(name: string): (string | number | boolean | null)[] | null | undefined {
         const data = this._dataStore.get(name);
         if (typeof data !== 'undefined') {
             return data.array;

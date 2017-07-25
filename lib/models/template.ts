@@ -18,12 +18,12 @@ export abstract class TemplateBase implements Template {
         }
 
         if (typeof data.regexp !== 'undefined') {
-            if (typeof data.value !== 'undefined') {
+            if (typeof data.value !== 'undefined' && data.value !== null) {
                 if (!RegExp(String(data.regexp)).test(String(data.value))) {
                     throw new Error(`The data with the name: '${data.name}' has the value: '${data.value}'.` +
                         `\nThis doesn't match the supplied regexp: '${data.regexp}'`);
                 }
-            } else if (typeof data.array !== 'undefined') {
+            } else if (typeof data.array !== 'undefined' && data.array !== null) {
                 for (const item of data.array) {
                     if (!RegExp(String(data.regexp)).test(String(item))) {
                         throw new Error(`The data with the name: '${data.name}' has the array with values: '${data.array}'.` +
@@ -47,9 +47,9 @@ export abstract class TemplateBase implements Template {
                         }
 
                         // Filter the arguments array where the value equals the current value, if empty error is thrown
-                        if (typeof data.value !== 'undefined') {
+                        if (typeof data.value !== 'undefined' && data.value !== null) {
                             wasError = validation.arguments.filter(argument => argument.value === data.value).length === 0;
-                        } else if (typeof data.array !== 'undefined') {
+                        } else if (typeof data.array !== 'undefined' && data.array !== null) {
                             // If not every value in the array is in the inclusion rule, error occurred
                             for (const item of data.array) {
                                 const itemInWhitelist = validation.arguments.filter(argument => argument.value === item).length !== 0;
@@ -67,9 +67,9 @@ export abstract class TemplateBase implements Template {
                         }
 
                         // Filter the arguments array where the value equals the current value, if not empty error is thrown
-                        if (typeof data.value !== 'undefined') {
+                        if (typeof data.value !== 'undefined' && data.value !== null) {
                             wasError = validation.arguments.filter(argument => argument.value === data.value).length > 0;
-                        } else if (typeof data.array !== 'undefined') {
+                        } else if (typeof data.array !== 'undefined' && data.array !== null) {
                             // If any value in the array is in the exclusion rule, error occurred
                             for (const item of data.array) {
                                 const itemInBlackList = validation.arguments.filter(argument => argument.value === item).length !== 0;
@@ -92,9 +92,9 @@ export abstract class TemplateBase implements Template {
                             break;
                         }
 
-                        if (typeof data.value !== 'undefined') {
+                        if (typeof data.value !== 'undefined' && data.value !== null) {
                             wasError = !RegExp(String(regexp_argument.value)).test(String(data.value));
-                        } else if (typeof data.array !== 'undefined') {
+                        } else if (typeof data.array !== 'undefined' && data.array !== null) {
                             // If any value in the array is not valid, error occurred
                             for (const item of data.array) {
                                 const isValidItem = RegExp(String(regexp_argument.value)).test(String(item));
@@ -121,13 +121,13 @@ export abstract class TemplateBase implements Template {
                         const lower_bound = Number(lower_bound_argument.value);
                         const upper_bound = Number(upper_bound_argument.value);
 
-                        if (typeof data.value !== 'undefined') {
+                        if (typeof data.value !== 'undefined' && data.value !== null) {
                             const valueLength = String(data.value).length;
 
                             if (!(valueLength >= lower_bound && valueLength <= upper_bound)) {
                                 wasError = true;
                             }
-                        } else if (typeof data.array !== 'undefined') {
+                        } else if (typeof data.array !== 'undefined' && data.array !== null) {
                             // If any value in the array is not valid, error occurred
                             for (const item of data.array) {
                                 const itemLength = String(item).length;
@@ -145,10 +145,10 @@ export abstract class TemplateBase implements Template {
                         }
 
                         // Expecting value to be Data URI with mime types
-                        if (typeof data.value !== 'undefined') {
+                        if (typeof data.value !== 'undefined' && data.value !== null) {
                             const fileType = (<string>data.value).split(';')[0].split(':')[1];
                             wasError = validation.arguments.filter(argument => fileType.includes(<string>argument.value)).length === 0;
-                        } else if (typeof data.array !== 'undefined') {
+                        } else if (typeof data.array !== 'undefined' && data.array !== null) {
                             // If any files in the array has an incorrect type, error occurred
                             for (const item of data.array) {
                                 const fileType = (<string>item).split(';')[0].split(':')[1];
@@ -185,7 +185,7 @@ export abstract class TemplateBase implements Template {
                             if (!(fileSize >= lower_file_bound && fileSize <= upper_file_bound)) {
                                 wasError = true;
                             }
-                        } else if (typeof data.array !== 'undefined') {
+                        } else if (typeof data.array !== 'undefined' && data.array !== null) {
                             for (const item of data.array) {
                                 const fileSize = (<string>item).length * (3 / 4);
                                 if (!(fileSize >= lower_file_bound && fileSize <= upper_file_bound)) {
@@ -256,6 +256,16 @@ export abstract class TemplateBase implements Template {
                 this.set(propertyName, dataObject[propertyName]);
             }
         }
+    }
+
+    public clear(): void {
+       for (const data of this._dataStore) {
+           if (typeof data.value !== 'undefined') {
+               data.value = null;
+           } else if (typeof data.array !== 'undefined') {
+               data.array = null;
+           }
+       }
     }
 
     public validate() {

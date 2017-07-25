@@ -3,8 +3,8 @@ import {DataJSON, ValidationJSON} from '../interfaces/json';
 
 export class DataBase implements Data {
     public name: string;
-    public value?: string | number | boolean;
-    public array?: (string | number | boolean)[];
+    public value?: string | number | boolean | null;
+    public array?: (string | number | boolean | null)[] | null;
     public object?: any;
     public prompt?: string;
     public regexp?: string;
