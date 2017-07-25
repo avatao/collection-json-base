@@ -1,3 +1,9 @@
+1.0.0-beta.19 / 2017-07-25
+==================
+
+* Data value and array properties can be null
+* Added clear method to template
+
 1.0.0-beta.18 / 2017-07-24
 ==================
 
