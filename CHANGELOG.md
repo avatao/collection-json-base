@@ -1,3 +1,8 @@
+1.0.0-beta.20 / 2017-08-04
+==================
+
+* Added the ability to turn on/off template validation globally
+
 1.0.0-beta.19 / 2017-07-25
 ==================
 
