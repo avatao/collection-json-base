@@ -1,5 +1,6 @@
 export class CollectionConfiguration {
     static httpService: any;
+    static shouldValidateTemplate = true;
 }
 
 export class CollectionConfigurationManager {
@@ -13,5 +14,13 @@ export class CollectionConfigurationManager {
 
     static setHttpService<T>(httpService: T) {
         CollectionConfiguration.httpService = httpService;
+    }
+
+    static turnOnTemplateValidation() {
+        CollectionConfiguration.shouldValidateTemplate = true;
+    }
+
+    static turnOffTemplateValidation() {
+        CollectionConfiguration.shouldValidateTemplate = false;
     }
 }

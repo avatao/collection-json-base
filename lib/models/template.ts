@@ -4,6 +4,7 @@ import {DataStore} from './datastore';
 import {DataJSON} from '../interfaces/json';
 import {CollectionBase} from './collection';
 import {DataBase} from './data';
+import {CollectionConfiguration} from './configuration';
 
 export abstract class TemplateBase implements Template {
 
@@ -269,6 +270,11 @@ export abstract class TemplateBase implements Template {
     }
 
     public validate() {
+
+        if (!CollectionConfiguration.shouldValidateTemplate) {
+            return;
+        }
+
         for (const data of this._dataStore) {
             TemplateBase.templateValidationExtensionCheck(data);
             TemplateBase.validationsArrayExtensionCheck(data);
