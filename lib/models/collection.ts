@@ -1,6 +1,7 @@
 import {
     Collection,
     CollectionJSON,
+    WrappedCollectionJSON,
     ErrorJSON,
     ItemJSON,
     LinkJSON,
@@ -25,18 +26,27 @@ export abstract class CollectionBase implements Collection {
     protected _template?: TemplateBase;
     protected _error?: ErrorBase;
 
-    constructor(collection: CollectionJSON) {
-        this.version = collection.version || '1.0';
+    constructor(collection: CollectionJSON | WrappedCollectionJSON) {
 
-        if (typeof collection.href !== 'undefined') {
-            if (!isUri(collection.href)) {
-                throw new Error('The supplied href must be a valid uri!')
+        let parsedCollection: CollectionJSON;
+
+        if (typeof (collection as WrappedCollectionJSON).collection !== 'undefined') {
+            parsedCollection = (collection as WrappedCollectionJSON).collection;
+        } else {
+            parsedCollection = collection;
+        }
+
+        this.version = parsedCollection.version || '1.0';
+
+        if (typeof parsedCollection.href !== 'undefined') {
+            if (!isUri(parsedCollection.href)) {
+                throw new Error('The supplied href must be a valid uri!');
             } else {
-                this.href = collection.href;
+                this.href = parsedCollection.href;
             }
         }
 
-        this.parseOptionalProperties(collection);
+        this.parseOptionalProperties(parsedCollection);
     }
 
     private parseOptionalProperties(collection: CollectionJSON) {
@@ -120,9 +130,9 @@ export abstract class CollectionBase implements Collection {
         return typeof this._linkStore !== 'undefined';
     }
 
-    public json(): {collection: CollectionJSON} {
+    public json(): WrappedCollectionJSON {
 
-        const result: {collection: CollectionJSON} = {collection: {version: this.version, href: this.href}};
+        const result: WrappedCollectionJSON = {collection: {version: this.version, href: this.href}};
 
         if (typeof this._linkStore !== 'undefined') {
             result.collection.links = this._linkStore.json();

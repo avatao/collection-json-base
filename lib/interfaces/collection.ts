@@ -1,5 +1,5 @@
 import {ItemStore, LinkStore, QueryStore} from '../models';
-import {CollectionJSON} from './json';
+import {WrappedCollectionJSON} from './json';
 import {LinkBase} from '../models/link';
 import {QueryBase} from '../models/query';
 import {TemplateBase} from '../models/template';
@@ -21,7 +21,7 @@ export interface CollectionAPI {
     hasLinks(): boolean;
     queries(): QueryStore;
     hasQueries(): boolean;
-    json(): {collection: CollectionJSON};
+    json(): WrappedCollectionJSON;
 }
 
 export interface Collection extends CollectionData, CollectionAPI {}

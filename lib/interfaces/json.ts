@@ -8,6 +8,10 @@ export interface CollectionJSON {
     error?: ErrorJSON;
 }
 
+export interface WrappedCollectionJSON {
+    collection: CollectionJSON;
+}
+
 export interface ValidationJSON {
     name: string;
     prompt?: string;
