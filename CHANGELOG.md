@@ -1,4 +1,4 @@
-1.0.0-beta.21 / 2017-09-14
+1.0.0-beta.23 / 2017-09-14
 ==================
 
 * Link follow method accepts params in any type -> the implementation should
