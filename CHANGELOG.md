@@ -1,3 +1,9 @@
+1.0.0-beta.21 / 2017-09-14
+==================
+
+* Link follow method accepts params in any type -> the implementation should
+redefine this with the proper type
+
 1.0.0-beta.20 / 2017-08-04
 ==================
 
