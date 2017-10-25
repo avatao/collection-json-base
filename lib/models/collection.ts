@@ -31,9 +31,9 @@ export abstract class CollectionBase implements Collection {
         let parsedCollection: CollectionJSON;
 
         if (typeof (collection as WrappedCollectionJSON).collection !== 'undefined') {
-            parsedCollection = (collection as WrappedCollectionJSON).collection;
+            parsedCollection = (collection as WrappedCollectionJSON).collection as CollectionJSON;
         } else {
-            parsedCollection = collection;
+            parsedCollection = collection as CollectionJSON;
         }
 
         this.version = parsedCollection.version || '1.0';

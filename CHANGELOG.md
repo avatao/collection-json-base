@@ -1,3 +1,9 @@
+1.0.0-beta.24 / 2017-10-25
+==================
+
+* Using TypeScript 2.5.x
+* Fixed type incompatibilities
+
 1.0.0-beta.23 / 2017-09-14
 ==================
 
