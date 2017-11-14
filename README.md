@@ -2,6 +2,7 @@ Collection+JSON TypeScript Client Library
 =========================================
 
 [![Build Status](https://travis-ci.org/avatao/collection-json-base.svg?branch=master)](https://travis-ci.org/avatao/collection-json-base)
+[![Known Vulnerabilities](https://snyk.io/test/github/avatao/collection-json-base/badge.svg)](https://snyk.io/test/github/avatao/collection-json-base)
 
 Disclaimer
 ---
