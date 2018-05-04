@@ -1,4 +1,4 @@
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {DataStore, CollectionBase} from '../models';
 import {QueryJSON} from './json';
 

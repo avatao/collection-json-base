@@ -1,4 +1,4 @@
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {Link, LinkJSON} from '../interfaces';
 import {CollectionBase} from './collection';
 

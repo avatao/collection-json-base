@@ -1,7 +1,7 @@
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {Query, QueryJSON} from '../interfaces';
 import {DataStore} from './datastore';
-import {DataJSON} from '../interfaces/json';
+import {DataJSON} from '../interfaces';
 import {CollectionBase} from './collection';
 
 export abstract class QueryBase implements Query {

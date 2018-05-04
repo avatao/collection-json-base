@@ -1,5 +1,4 @@
-import {Data} from '../interfaces/data';
-import {DataJSON, ValidationJSON} from '../interfaces/json';
+import {Data, DataJSON, ValidationJSON} from '../interfaces';
 
 export class DataBase implements Data {
     public name: string;

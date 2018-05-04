@@ -1,8 +1,8 @@
 import {LinkStore} from '../models';
 import {ItemJSON} from './json';
-import {LinkBase} from '../models/link';
+import {LinkBase} from '../models';
 import {DataBase} from '../models/data';
-import {DataStore} from '../models/datastore';
+import {DataStore} from '../models';
 
 export interface ItemAPI {
     link(rel: string): LinkBase | undefined;

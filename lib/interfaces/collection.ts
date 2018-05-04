@@ -1,9 +1,5 @@
-import {ItemStore, LinkStore, QueryStore} from '../models';
+import {ErrorBase, ItemStore, LinkBase, LinkStore, QueryBase, QueryStore, TemplateBase} from '../models';
 import {WrappedCollectionJSON} from './json';
-import {LinkBase} from '../models/link';
-import {QueryBase} from '../models/query';
-import {TemplateBase} from '../models/template';
-import {ErrorBase} from '../models/error';
 
 export interface CollectionData {
     version: string;

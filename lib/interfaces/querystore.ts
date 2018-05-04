@@ -1,5 +1,5 @@
 import {QueryJSON} from './json';
-import {QueryBase} from '../models/query';
+import {QueryBase} from '../models';
 
 export interface QueryStoreAPI {
     add(query: QueryBase): void;

@@ -1,5 +1,5 @@
 import {LinkJSON} from './json';
-import {LinkBase} from '../models/link';
+import {LinkBase} from '../models';
 
 export interface LinkStoreAPI {
     add(link: LinkBase): void;

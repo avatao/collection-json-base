@@ -1,8 +1,8 @@
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {TemplateJSON} from './json';
-import {CollectionBase} from '../models/collection';
+import {CollectionBase} from '../models';
 import {DataBase} from '../models/data';
-import {DataStore} from '../models/datastore';
+import {DataStore} from '../models';
 
 export interface TemplateAPI {
     submit(): Observable<CollectionBase>;

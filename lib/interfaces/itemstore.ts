@@ -1,5 +1,5 @@
 import {ItemJSON} from './json';
-import {ItemBase} from '../models/item';
+import {ItemBase} from '../models';
 
 export interface ItemStoreAPI {
     add(item: ItemBase): void;

@@ -1,5 +1,5 @@
 import {QueryStoreAPI} from '../interfaces/querystore';
-import {QueryJSON} from '../interfaces/json';
+import {QueryJSON} from '../interfaces';
 import {QueryBase} from './query';
 
 export class QueryStore implements QueryStoreAPI {
